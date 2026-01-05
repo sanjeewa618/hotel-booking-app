@@ -38,6 +38,44 @@ const ManageRoomPage = () => {
     fetchRoomTypes();
   }, []);
 
+  // ScrollReveal animations
+  useEffect(() => {
+    if (window.ScrollReveal && rooms.length > 0) {
+      const scrollRevealOption = {
+        distance: "50px",
+        duration: 1000,
+        easing: "ease-in-out",
+        origin: "bottom",
+        reset: false,
+      };
+
+      window.ScrollReveal().reveal(".all-rooms-title", {
+        ...scrollRevealOption,
+        origin: "top",
+        delay: 200,
+      });
+
+      window.ScrollReveal().reveal(".add-room-button", {
+        ...scrollRevealOption,
+        origin: "right",
+        delay: 300,
+      });
+
+      window.ScrollReveal().reveal(".room-filter-div", {
+        ...scrollRevealOption,
+        origin: "bottom",
+        delay: 400,
+      });
+
+      window.ScrollReveal().reveal(".room-list-item", {
+        ...scrollRevealOption,
+        origin: "bottom",
+        interval: 200,
+        delay: 500,
+      });
+    }
+  }, [rooms]);
+
   const handleRoomTypeChange = (e) => {
     setSelectedRoomType(e.target.value);
     filterRooms(e.target.value);

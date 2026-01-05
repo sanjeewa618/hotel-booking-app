@@ -23,6 +23,50 @@ const ProfilePage = () => {
         fetchUserProfile();
     }, []);
 
+    // ScrollReveal animations
+    useEffect(() => {
+        if (window.ScrollReveal && user) {
+            const scrollRevealOption = {
+                distance: "50px",
+                duration: 1000,
+                easing: "ease-in-out",
+                origin: "bottom",
+                reset: false,
+            };
+
+            window.ScrollReveal().reveal(".profile-page h2", {
+                ...scrollRevealOption,
+                origin: "top",
+                delay: 200,
+            });
+
+            window.ScrollReveal().reveal(".profile-actions", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 300,
+            });
+
+            window.ScrollReveal().reveal(".profile-details", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 400,
+            });
+
+            window.ScrollReveal().reveal(".bookings-section", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 500,
+            });
+
+            window.ScrollReveal().reveal(".booking-item", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                interval: 200,
+                delay: 600,
+            });
+        }
+    }, [user]);
+
     const handleLogout = () => {
         ApiService.logout();
         navigate('/home');

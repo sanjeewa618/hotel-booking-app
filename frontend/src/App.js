@@ -8,6 +8,7 @@ import FooterComponent from './component/common/Footer';
 import LoginPage from './component/auth/LoginPage';
 import RegisterPage from './component/auth/RegisterPage';
 import HomePage from './component/home/HomePage';
+import AboutPage from './component/about/AboutPage';
 import AllRoomsPage from './component/booking_rooms/AllRoomsPage';
 import RoomDetailsBookingPage from './component/booking_rooms/RoomDetailsPage';
 import FindBookingPage from './component/booking_rooms/FindBookingPage';
@@ -34,6 +35,7 @@ function App() {
             <Routes>
               {/* Public Routes */}
               <Route exact path="/home" element={<HomePage />} />
+              <Route exact path="/about" element={<AboutPage />} />
               <Route exact path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/rooms" element={<AllRoomsPage />} />

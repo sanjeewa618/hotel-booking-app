@@ -31,6 +31,38 @@ const AddRoomPage = () => {
         fetchRoomTypes();
     }, []);
 
+    // ScrollReveal animations
+    useEffect(() => {
+        if (window.ScrollReveal) {
+            const scrollRevealOption = {
+                distance: "50px",
+                duration: 1000,
+                easing: "ease-in-out",
+                origin: "bottom",
+                reset: false,
+            };
+
+            window.ScrollReveal().reveal(".add-room-container h2", {
+                ...scrollRevealOption,
+                origin: "top",
+                delay: 200,
+            });
+
+            window.ScrollReveal().reveal(".form-group", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                interval: 150,
+                delay: 400,
+            });
+
+            window.ScrollReveal().reveal(".add-room-button", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 700,
+            });
+        }
+    }, []);
+
 
 
     const handleChange = (e) => {

@@ -20,6 +20,37 @@ const EditProfilePage = () => {
         fetchUserProfile();
     }, []);
 
+    // ScrollReveal animations
+    useEffect(() => {
+        if (window.ScrollReveal && user) {
+            const scrollRevealOption = {
+                distance: "50px",
+                duration: 1000,
+                easing: "ease-in-out",
+                origin: "bottom",
+                reset: false,
+            };
+
+            window.ScrollReveal().reveal(".edit-profile-page h2", {
+                ...scrollRevealOption,
+                origin: "top",
+                delay: 200,
+            });
+
+            window.ScrollReveal().reveal(".profile-details", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 400,
+            });
+
+            window.ScrollReveal().reveal(".delete-profile-button", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 600,
+            });
+        }
+    }, [user]);
+
     const handleDeleteProfile = async () => {
         if (!window.confirm('Are you sure you want to delete your account?')) {
             return;

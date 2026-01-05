@@ -64,6 +64,44 @@ const AdminPage = () => {
         fetchDashboardData();
     }, []);
 
+    // ScrollReveal animations
+    useEffect(() => {
+        if (window.ScrollReveal) {
+            const scrollRevealOption = {
+                distance: "50px",
+                duration: 1000,
+                easing: "ease-in-out",
+                origin: "bottom",
+                reset: false,
+            };
+
+            window.ScrollReveal().reveal(".admin-header", {
+                ...scrollRevealOption,
+                origin: "top",
+                delay: 200,
+            });
+
+            window.ScrollReveal().reveal(".stat-card", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                interval: 150,
+                delay: 400,
+            });
+
+            window.ScrollReveal().reveal(".quick-actions", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 600,
+            });
+
+            window.ScrollReveal().reveal(".recent-bookings", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 800,
+            });
+        }
+    }, [loading]);
+
     // Derived stats
     const occupiedRooms = stats.totalRooms - stats.availableRooms;
     const occupancyRate = stats.totalRooms > 0 ? Math.round((occupiedRooms / stats.totalRooms) * 100) : 0;

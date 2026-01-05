@@ -26,6 +26,44 @@ const ManageBookingsPage = () => {
         fetchBookings();
     }, []);
 
+    // ScrollReveal animations
+    useEffect(() => {
+        if (window.ScrollReveal && bookings.length > 0) {
+            const scrollRevealOption = {
+                distance: "50px",
+                duration: 1000,
+                easing: "ease-in-out",
+                origin: "bottom",
+                reset: false,
+            };
+
+            window.ScrollReveal().reveal(".all-bookings-title", {
+                ...scrollRevealOption,
+                origin: "top",
+                delay: 200,
+            });
+
+            window.ScrollReveal().reveal(".search-div", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 300,
+            });
+
+            window.ScrollReveal().reveal(".booking-list", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 400,
+            });
+
+            window.ScrollReveal().reveal(".booking-item", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                interval: 200,
+                delay: 500,
+            });
+        }
+    }, [bookings]);
+
     const filterBookings = useCallback((term) => {
         if (term === '') {
             setFilteredBookings(bookings);
@@ -54,7 +92,7 @@ const ManageBookingsPage = () => {
 
     return (
         <div className='bookings-container'>
-            <h2>All Bookings</h2>
+            <h2 className='all-bookings-title'>All Bookings</h2>
             <div className='search-div'>
                 <label>Filter by Booking Number:</label>
                 <input

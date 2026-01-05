@@ -46,14 +46,14 @@ const RoomSearch = ({ handleSearchResult }) => {
       // Check if the response is successful
       if (response.statusCode === 200) {
         if (response.roomList.length === 0) {
-          showError('Room not currently available for this date range on the selected rom type.');
+          showError('Room not currently available for this date range on the selected room type.');
           return
         }
         handleSearchResult(response.roomList);
         setError('');
       }
     } catch (error) {
-      showError("Unown error occured: " + error.response.data.message);
+      showError("Unknown error occurred: " + (error.response?.data?.message || error.message || 'Please try again'));
     }
   };
 
@@ -67,6 +67,7 @@ const RoomSearch = ({ handleSearchResult }) => {
             onChange={(date) => setStartDate(date)}
             dateFormat="dd/MM/yyyy"
             placeholderText="Select Check-in Date"
+            popperPlacement="bottom-start"
           />
         </div>
         <div className="search-field">
@@ -76,6 +77,7 @@ const RoomSearch = ({ handleSearchResult }) => {
             onChange={(date) => setEndDate(date)}
             dateFormat="dd/MM/yyyy"
             placeholderText="Select Check-out Date"
+            popperPlacement="bottom-start"
           />
         </div>
 

@@ -35,8 +35,10 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/rooms/all", "/rooms/room-by-id/**", "/rooms/types", "/rooms/available-rooms", "/rooms/available-rooms-by-date-and-type").permitAll()
                         .requestMatchers("/rooms/add", "/rooms/update/**", "/rooms/delete/**").hasAuthority("ADMIN")
-                        .requestMatchers("/rooms/**", "/bookings/**").permitAll()
+                        .requestMatchers("/bookings/all", "/bookings/get-by-confirmation-code/**").permitAll()
+                        .requestMatchers("/bookings/**").authenticated()
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

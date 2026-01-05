@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ApiService from '../../service/ApiService';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,6 +15,38 @@ function RegisterPage() {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+
+    // ScrollReveal animations
+    useEffect(() => {
+        if (window.ScrollReveal) {
+            const scrollRevealOption = {
+                distance: "50px",
+                duration: 1000,
+                easing: "ease-in-out",
+                origin: "bottom",
+                reset: false,
+            };
+
+            window.ScrollReveal().reveal(".auth-container h2", {
+                ...scrollRevealOption,
+                origin: "top",
+                delay: 200,
+            });
+
+            window.ScrollReveal().reveal(".form-group", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                interval: 150,
+                delay: 400,
+            });
+
+            window.ScrollReveal().reveal(".auth-button", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 700,
+            });
+        }
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;

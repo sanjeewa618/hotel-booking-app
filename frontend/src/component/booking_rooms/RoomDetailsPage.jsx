@@ -41,6 +41,44 @@ const RoomDetailsPage = () => {
     fetchData();
   }, [roomId]); // Re-run effect when roomId changes
 
+  // ScrollReveal animations
+  useEffect(() => {
+    if (window.ScrollReveal && roomDetails) {
+      const scrollRevealOption = {
+        distance: "50px",
+        duration: 1000,
+        easing: "ease-in-out",
+        origin: "bottom",
+        reset: false,
+      };
+
+      window.ScrollReveal().reveal(".room-details-booking", {
+        ...scrollRevealOption,
+        origin: "left",
+        delay: 200,
+      });
+
+      window.ScrollReveal().reveal(".room-image", {
+        ...scrollRevealOption,
+        origin: "right",
+        delay: 300,
+      });
+
+      window.ScrollReveal().reveal(".booking-info", {
+        ...scrollRevealOption,
+        origin: "bottom",
+        delay: 400,
+      });
+
+      window.ScrollReveal().reveal(".date-picker-container", {
+        ...scrollRevealOption,
+        origin: "bottom",
+        interval: 200,
+        delay: 500,
+      });
+    }
+  }, [roomDetails]);
+
 
   const handleConfirmBooking = async () => {
     // Check if check-in and check-out dates are selected

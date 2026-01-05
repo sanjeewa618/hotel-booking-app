@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate,useLocation } from "react-router-dom";
 import ApiService from "../../service/ApiService";
 
@@ -10,6 +10,38 @@ function LoginPage() {
     const location = useLocation();
 
   const from = location.state?.from?.pathname || '/home';
+
+  // ScrollReveal animations
+  useEffect(() => {
+    if (window.ScrollReveal) {
+      const scrollRevealOption = {
+        distance: "50px",
+        duration: 1000,
+        easing: "ease-in-out",
+        origin: "bottom",
+        reset: false,
+      };
+
+      window.ScrollReveal().reveal(".auth-container h2", {
+        ...scrollRevealOption,
+        origin: "top",
+        delay: 200,
+      });
+
+      window.ScrollReveal().reveal(".form-group", {
+        ...scrollRevealOption,
+        origin: "bottom",
+        interval: 150,
+        delay: 400,
+      });
+
+      window.ScrollReveal().reveal(".auth-button", {
+        ...scrollRevealOption,
+        origin: "bottom",
+        delay: 600,
+      });
+    }
+  }, []);
 
 
     const handleSubmit = async (e) => {

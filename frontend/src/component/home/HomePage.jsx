@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RoomResult from "../common/RoomResult";
 import RoomSearch from "../common/RoomSearch";
 
-
-
-
 const HomePage = () => {
-
     const [roomSearchResults, setRoomSearchResults] = useState([]);
 
     // Function to handle search results
@@ -14,96 +10,196 @@ const HomePage = () => {
         setRoomSearchResults(results);
     };
 
+    // ScrollReveal animations
+    useEffect(() => {
+        if (window.ScrollReveal) {
+            const scrollRevealOption = {
+                distance: "50px",
+                duration: 1000,
+                easing: "ease-in-out",
+                origin: "bottom",
+                reset: false,
+            };
+
+            // Hero section
+            window.ScrollReveal().reveal(".hero-content", {
+                ...scrollRevealOption,
+                origin: "top",
+                delay: 200,
+            });
+
+            // Search section
+            window.ScrollReveal().reveal(".search-wrapper", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 300,
+            });
+
+            // Room results
+            window.ScrollReveal().reveal(".room-list-item", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                interval: 200,
+                delay: 400,
+            });
+
+            // Services header
+            window.ScrollReveal().reveal(".section-header", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                delay: 200,
+            });
+
+            // Services items
+            window.ScrollReveal().reveal(".service-item", {
+                ...scrollRevealOption,
+                origin: "bottom",
+                interval: 150,
+                delay: 400,
+            });
+        }
+    }, []);
+
     return (
-        <div className="home">
-
-            <section>
-                <header className="header-banner">
-                    <img src="./assets/images/hero-background.png" alt="Aurora Hotel" className="header-image" />
-                    <div className="overlay"></div>
-                    <div className="animated-texts overlay-content">
-                        <h1>
-                            Welcome to <span className="zenora-color">Aurora Hotel</span>
-                        </h1><br />
-                        <h3>Step into a haven of comfort and care</h3>
-
-                        <div className="header-buttons">
-                            <button className="btn-primary" onClick={() => window.location.href = '/login'}>
-                                Login <span>→</span>
+        <div className="home-page-wrapper">
+            {/* HERO SECTION */}
+            <section className="hero-banner-section">
+                <div className="hero-banner-container">
+                    <img src="./assets/images/hero-background.png" alt="Aurora Hotel" className="hero-bg-image" />
+                    <div className="hero-overlay"></div>
+                    <div className="hero-content">
+                        <h1 className="hero-title">
+                            Welcome to <span className="brand-highlight">Aurora Hotel</span>
+                        </h1>
+                        <p className="hero-description">Experience luxury, comfort and exceptional hospitality</p>
+                        <div className="hero-buttons">
+                            <button className="hero-btn hero-btn-primary" onClick={() => window.location.href = '/rooms'}>
+                                Book Now
                             </button>
-                            <button className="btn-secondary" onClick={() => document.querySelector('.service-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                                Our Services <span>→</span>
+                            <button className="hero-btn hero-btn-secondary" onClick={() => window.location.href = '/about'}>
+                                Discover More
                             </button>
                         </div>
                     </div>
-
-                </header>
-            </section>
-
-            {/* SEARCH/FIND AVAILABLE ROOM SECTION */}
-            <RoomSearch handleSearchResult={handleSearchResult} />
-            <RoomResult roomSearchResults={roomSearchResults} />
-
-            <h4><a className="view-rooms-home" href="/rooms">All Rooms</a></h4>
-            {/* ABOUT US SECTION */}
-            <section className="about-section">
-                <div className="about-container">
-                    <h2>About <span className="zenora-color">Us</span></h2>
-
-                    <div className="about-content">
-                        <div className="about-image">
-                            <img src="./assets/images/about1.png" alt="Aurora Hotel Interior" />
-                        </div>
-                        <p>
-                            At Aurora Hotel, we believe that every stay should be more than just a place to rest — it should be an experience filled with comfort, beauty,
-                            and unforgettable memories. Designed with a blend of modern elegance and warm hospitality, our hotel offers the perfect balance of luxury and relaxation.
-                            From the moment you arrive, our dedicated team is committed to ensuring your stay feels exceptional, personal, and seamless. Every space within Aurora Hotel has been thoughtfully crafted — from our
-                            beautifully furnished rooms and calming interior aesthetics to our exceptional dining and recreational facilities. Welcome to a place where your experience comes first — welcome to Aurora Hotel.
-                            From our elegantly designed rooms to our exceptional dining and recreational facilities,
-                            every detail is crafted to exceed your expectations.
-                        </p>
-                    </div>
-
-
                 </div>
             </section>
 
-            <h2 className="home-services">Services at <span className="zenora-color">Aurora Hotel</span></h2>
+            {/* SEARCH SECTION */}
+            <section className="search-availability-section">
+                <div className="search-wrapper">
+                    <h2 className="search-section-title">Find Your Perfect Room</h2>
+                    <RoomSearch handleSearchResult={handleSearchResult} />
+                </div>
+                <RoomResult roomSearchResults={roomSearchResults} />
+            </section>
 
             {/* SERVICES SECTION */}
-            <section className="service-section"><div className="service-card">
-                <img src="https://media.istockphoto.com/id/1399980977/photo/hand-with-remote-control-directed-on-air-conditioner.jpg?s=612x612&w=0&k=20&c=xqENxTqbyyahXcKhg2Yn_zBEjYKTbDv8PNS294XQo9c=" alt="Air Conditioning" />
-                <div className="service-details">
-                    <h3 className="service-title">Air Conditioning</h3>
-                    <p className="service-description">Enjoy a cool and refreshing stay with our individually controlled air conditioning, designed to keep your room perfectly comfortable no matter the weather outside.</p>
-                </div>
-            </div>
-                <div className="service-card">
-                    <img src="https://images.pexels.com/photos/29463197/pexels-photo-29463197.jpeg" alt="Mini Bar" />
-                    <div className="service-details">
-                        <h3 className="service-title">Mini Bar</h3>
-                        <p className="service-description">Relax with a delightful selection of complimentary snacks and beverages from your in-room mini bar, thoughtfully stocked for your convenience and enjoyment.</p>
+            <section className="services-showcase-section">
+                <div className="services-container">
+                    <div className="section-header">
+                        <h2 className="section-title">Our Premium Services</h2>
+                        
                     </div>
-                </div>
-                <div className="service-card">
-                    <img src="https://images.pexels.com/photos/776122/pexels-photo-776122.jpeg" alt="Parking" />
-                    <div className="service-details">
-                        <h3 className="service-title">Parking</h3>
-                        <p className="service-description">Travel with peace of mind using our secure on-site parking facilities. Convenient and easily accessible, with valet assistance available upon request.</p>
-                    </div>
-                </div>
-                <div className="service-card">
-                    <img src="./assets/images/wifi.png" alt="WiFi" />
-                    <div className="service-details">
-                        <h3 className="service-title">WiFi</h3>
-                        <p className="service-description">Stay connected effortlessly with our high-speed complimentary WiFi, available throughout the property for a smooth and reliable online experience.</p>
-                    </div>
-                </div>
+                    
 
-            </section>
-            {/* AVAILABLE ROOMS SECTION */}
-            <section>
+                    <div className="services-grid">
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/1599791/pexels-photo-1599791.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Air Conditioning" className="service-image" />
+                            <div className="service-content">
+                                <h3>Air Conditioning</h3>
+                                <p>Climate-controlled rooms for your ultimate comfort</p>
+                            </div>
+                        </div>
 
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mini Bar" className="service-image" />
+                            <div className="service-content">
+                                <h3>Mini Bar</h3>
+                                <p>Complimentary refreshments stocked daily</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/776122/pexels-photo-776122.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Secure Parking" className="service-image" />
+                            <div className="service-content">
+                                <h3>Secure Parking</h3>
+                                <p>Free valet parking with 24/7 security</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/5483077/pexels-photo-5483077.jpeg?auto=compress&cs=tinysrgb&w=600" alt="High-Speed WiFi" className="service-image" />
+                            <div className="service-content">
+                                <h3>High-Speed WiFi</h3>
+                                <p>Lightning-fast internet throughout the property</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Spa & Wellness" className="service-image" />
+                            <div className="service-content">
+                                <h3>Spa & Wellness</h3>
+                                <p>Rejuvenating treatments and massage therapy</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fine Dining" className="service-image" />
+                            <div className="service-content">
+                                <h3>Fine Dining</h3>
+                                <p>Award-winning restaurant with gourmet cuisine</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fitness Center" className="service-image" />
+                            <div className="service-content">
+                                <h3>Fitness Center</h3>
+                                <p>State-of-the-art gym equipment available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/261181/pexels-photo-261181.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Swimming Pool" className="service-image" />
+                            <div className="service-content">
+                                <h3>Swimming Pool</h3>
+                                <p>Olympic-sized pool with poolside bar service</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Room Service" className="service-image" />
+                            <div className="service-content">
+                                <h3>Room Service</h3>
+                                <p>Gourmet meals delivered to your room anytime</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Concierge" className="service-image" />
+                            <div className="service-content">
+                                <h3>Concierge</h3>
+                                <p>Expert assistance for all your travel needs</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Business Center" className="service-image" />
+                            <div className="service-content">
+                                <h3>Business Center</h3>
+                                <p>Fully equipped meeting rooms and facilities</p>
+                            </div>
+                        </div>
+
+                        <div className="service-item">
+                            <img src="https://images.pexels.com/photos/5591581/pexels-photo-5591581.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Laundry Service" className="service-image" />
+                            <div className="service-content">
+                                <h3>Laundry Service</h3>
+                                <p>Professional cleaning with same-day delivery</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     );
