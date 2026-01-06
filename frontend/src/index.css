@@ -186,7 +186,6 @@ body, #root, .App {
     margin-bottom: 5px;
 }
 
-
 .form-group input {
     width: 90%;
     padding: 10px;
@@ -701,6 +700,7 @@ button[type="submit"]:hover {
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 0;
+    pointer-events: none;
 }
 
 .search-container:hover::before {
@@ -2002,12 +2002,41 @@ button[type="submit"]:hover {
     margin-right: 10px;
     width: 300px;
     transition: all 0.3s;
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
 }
 
 .search-container input[type="text"]:focus {
     outline: none;
     border-color: #007F86;
     box-shadow: 0 0 0 3px rgba(0, 127, 134, 0.1);
+}
+
+/* Specific styling for booking code input */
+.booking-code-input {
+    padding: 14px 20px !important;
+    font-size: 16px !important;
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    width: 400px !important;
+    max-width: 100% !important;
+    transition: all 0.3s ease !important;
+    pointer-events: auto !important;
+    cursor: text !important;
+    position: relative !important;
+    z-index: 100 !important;
+    background-color: white !important;
+}
+
+.booking-code-input:focus {
+    outline: none !important;
+    border-color: #007F86 !important;
+    box-shadow: 0 0 0 3px rgba(0, 127, 134, 0.15) !important;
+}
+
+.booking-code-input:hover {
+    border-color: #007F86 !important;
 }
 
 button {
@@ -2020,6 +2049,9 @@ button {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
 }
 
 button:hover {
@@ -2027,6 +2059,39 @@ button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 127, 134, 0.3);
 }
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Specific styling for search container button */
+.search-container button {
+    padding: 14px 30px !important;
+    font-size: 16px !important;
+    background: linear-gradient(135deg, #007F86, #005f66) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+.search-container button:hover {
+    background: linear-gradient(135deg, #005f66, #007F86) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 127, 134, 0.3) !important;
+}
+
+.search-container button:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+}
+
 
 
 

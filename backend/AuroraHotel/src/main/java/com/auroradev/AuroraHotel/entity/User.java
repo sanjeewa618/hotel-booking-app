@@ -31,6 +31,10 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     @NotBlank(message = "Password is required")
+    @jakarta.validation.constraints.Pattern(
+        regexp = "^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{8,12}$",
+        message = "Password must be 8-12 characters long and contain at least one uppercase letter and one special character"
+    )
     private String password;
 
     private String role;

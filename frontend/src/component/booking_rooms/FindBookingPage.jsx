@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import ApiService from '../../service/ApiService'; // Assuming your service is in a file called ApiService.js
+import ApiService from '../../service/ApiService';
 
 const FindBookingPage = () => {
-    const [confirmationCode, setConfirmationCode] = useState(''); // State variable for confirmation code
-    const [bookingDetails, setBookingDetails] = useState(null); // State variable for booking details
-    const [error, setError] = useState(null); // Track any errors
+    const [confirmationCode, setConfirmationCode] = useState('');
+    const [bookingDetails, setBookingDetails] = useState(null);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSearch = async () => {
         if (!confirmationCode.trim()) {
@@ -12,14 +13,36 @@ const FindBookingPage = () => {
             setTimeout(() => setError(''), 5000);
             return;
         }
+
+        setIsLoading(true);
+        setError(null);
+        setBookingDetails(null);
+
+        console.log('Searching for booking with code:', confirmationCode);
+
         try {
-            // Call API to get booking details
             const response = await ApiService.getBookingByConfirmationCode(confirmationCode);
-            setBookingDetails(response.booking);
-            setError(null); // Clear error if successful
+            console.log('Booking API Response:', response);
+
+            if (response.statusCode === 200 && response.booking) {
+                setBookingDetails(response.booking);
+                setError(null);
+            } else {
+                setError(response.message || 'Booking not found');
+            }
         } catch (error) {
-            setError(error.response?.data?.message || error.message);
+            console.error('Error fetching booking:', error);
+            const errorMessage = error.response?.data?.message || error.message || 'Failed to fetch booking details';
+            setError(errorMessage);
             setTimeout(() => setError(''), 5000);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
         }
     };
 
@@ -28,15 +51,21 @@ const FindBookingPage = () => {
             <h2>Find Booking</h2>
             <div className="search-container">
                 <input
+                    className="booking-code-input"
                     required
                     type="text"
                     placeholder="Enter your booking confirmation code"
                     value={confirmationCode}
                     onChange={(e) => setConfirmationCode(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    autoComplete="off"
+                    disabled={isLoading}
                 />
-                <button onClick={handleSearch}>Find</button>
+                <button onClick={handleSearch} disabled={isLoading}>
+                    {isLoading ? 'Searching...' : 'Find'}
+                </button>
             </div>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p className="error-message" style={{ color: 'red', marginTop: '20px', fontSize: '16px' }}>{error}</p>}
             {bookingDetails && (
                 <div className="booking-details">
                     <h3>Booking Details</h3>

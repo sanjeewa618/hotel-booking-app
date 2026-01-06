@@ -27,7 +27,10 @@ function Navbar() {
                 <li><NavLink to="/home" activeclassname="active">Home</NavLink></li>
                 <li><NavLink to="/about" activeclassname="active">About</NavLink></li>
                 <li><NavLink to="/rooms" activeclassname="active">Rooms</NavLink></li>
-                <li><NavLink to="/find-booking" activeclassname="active">Bookings</NavLink></li>
+                
+                {isAuthenticated && (
+                    <li><NavLink to="/find-booking" activeclassname="active">Bookings</NavLink></li>
+                )}
 
                 {isAuthenticated && (
                     <li className="cart-nav-item">

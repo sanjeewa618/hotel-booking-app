@@ -22,31 +22,41 @@ const AdminPage = () => {
 
                 // Fetch admin profile
                 const profileResponse = await ApiService.getUserProfile();
+                console.log('Admin Profile:', profileResponse);
                 setAdminName(profileResponse.user.name);
 
                 // Fetch all rooms
                 const roomsResponse = await ApiService.getAllRooms();
                 const allRooms = roomsResponse.roomList || [];
+                console.log('All Rooms Response:', roomsResponse);
+                console.log('Total Rooms:', allRooms.length);
 
                 // Fetch all bookings
                 const bookingsResponse = await ApiService.getAllBookings();
+                console.log('All Bookings Response:', bookingsResponse);
                 const allBookings = bookingsResponse.bookingList || [];
+                console.log('Total Bookings:', allBookings.length);
+                console.log('Bookings:', allBookings);
 
                 // Fetch all users
                 const usersResponse = await ApiService.getAllUsers();
                 const allUsers = usersResponse.userList || [];
+                console.log('Total Users:', allUsers.length);
 
                 // Fetch available rooms
                 const availableRoomsResponse = await ApiService.getAllAvailableRooms();
                 const availableRooms = availableRoomsResponse.roomList || [];
+                console.log('Available Rooms:', availableRooms.length);
 
                 // Set statistics
-                setStats({
+                const statsData = {
                     totalRooms: allRooms.length,
                     totalBookings: allBookings.length,
                     totalUsers: allUsers.length,
                     availableRooms: availableRooms.length
-                });
+                };
+                console.log('Stats Data:', statsData);
+                setStats(statsData);
 
                 // Get recent bookings (last 5)
                 const sortedBookings = allBookings
@@ -55,7 +65,8 @@ const AdminPage = () => {
                 setRecentBookings(sortedBookings);
 
             } catch (error) {
-                console.error('Error fetching dashboard data:', error.message);
+                console.error('Error fetching dashboard data:', error);
+                console.error('Error details:', error.response?.data || error.message);
             } finally {
                 setLoading(false);
             }

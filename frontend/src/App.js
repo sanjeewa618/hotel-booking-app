@@ -39,9 +39,11 @@ function App() {
               <Route exact path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/rooms" element={<AllRoomsPage />} />
-              <Route path="/find-booking" element={<FindBookingPage />} />
 
               {/* Protected Routes */}
+              <Route path="/find-booking"
+                element={<ProtectedRoute element={<FindBookingPage />} />}
+              />
               <Route path="/room-details-book/:roomId"
                 element={<ProtectedRoute element={<RoomDetailsBookingPage />} />}
               />
@@ -79,7 +81,7 @@ function App() {
               />
 
               {/* Fallback Route */}
-              <Route path="*" element={<Navigate to="/login" />} />
+              <Route path="*" element={<Navigate to="/home" />} />
             </Routes>
           </div>
           <FooterComponent />

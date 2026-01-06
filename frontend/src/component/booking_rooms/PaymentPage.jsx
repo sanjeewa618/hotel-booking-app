@@ -82,8 +82,13 @@ const PaymentPage = () => {
             const userProfile = await ApiService.getUserProfile();
             const userId = userProfile.user.id;
 
+            console.log('Processing bookings for user:', userId);
+            console.log('Cart items:', cartItems);
+
             // Process each booking
             const confirmations = [];
+            const errors = [];
+            
             for (const item of cartItems) {
                 const booking = {
                     checkInDate: item.checkInDate,
@@ -92,8 +97,12 @@ const PaymentPage = () => {
                     numOfChildren: item.numChildren
                 };
 
+                console.log('Attempting to book room:', item.room.id, 'with data:', booking);
+
                 try {
                     const response = await ApiService.bookRoom(item.room.id, userId, booking);
+                    console.log('Booking response:', response);
+                    
                     if (response.statusCode === 200) {
                         confirmations.push({
                             roomType: item.room.roomType,
@@ -101,26 +110,41 @@ const PaymentPage = () => {
                             checkIn: item.checkInDate,
                             checkOut: item.checkOutDate
                         });
+                    } else {
+                        errors.push(`${item.room.roomType}: ${response.message || 'Unknown error'}`);
                     }
                 } catch (err) {
                     console.error('Booking error for room:', item.room.roomType, err);
-                    setError(`Failed to book ${item.room.roomType}. Please try again.`);
+                    const errorMessage = err.response?.data?.message || err.message || 'Unknown error';
+                    errors.push(`${item.room.roomType}: ${errorMessage}`);
                 }
             }
+
+            console.log('Confirmations:', confirmations);
+            console.log('Errors:', errors);
 
             if (confirmations.length > 0) {
                 setBookingConfirmations(confirmations);
                 clearCart();
+                
+                // If there were some errors, show them
+                if (errors.length > 0) {
+                    setError(`Some bookings failed: ${errors.join(', ')}`);
+                }
+                
                 // Show success message and redirect after 10 seconds
                 setTimeout(() => {
                     navigate('/profile');
                 }, 10000);
             } else {
-                setError('Failed to process bookings. Please try again.');
+                // All bookings failed
+                const errorDetails = errors.length > 0 ? errors.join('; ') : 'Unknown error occurred';
+                setError(`Failed to process bookings: ${errorDetails}`);
             }
 
         } catch (error) {
-            setError(error.response?.data?.message || 'Payment failed. Please try again.');
+            console.error('Payment error:', error);
+            setError(error.response?.data?.message || error.message || 'Payment failed. Please try again.');
         } finally {
             setIsProcessing(false);
         }

@@ -15,6 +15,7 @@ function RegisterPage() {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
     // ScrollReveal animations
     useEffect(() => {
@@ -51,11 +52,41 @@ function RegisterPage() {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        
+        // Validate password on change
+        if (name === 'password') {
+            validatePassword(value);
+        }
+    };
+
+    const validatePassword = (password) => {
+        const minLength = 8;
+        const maxLength = 12;
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+        
+        if (password.length < minLength || password.length > maxLength) {
+            setPasswordError(`Password must be ${minLength}-${maxLength} characters long`);
+            return false;
+        }
+        if (!hasUpperCase) {
+            setPasswordError('Password must contain at least one uppercase letter');
+            return false;
+        }
+        if (!hasSpecialChar) {
+            setPasswordError('Password must contain at least one special character');
+            return false;
+        }
+        setPasswordError('');
+        return true;
     };
 
     const validateForm = () => {
         const { name, email, password, phoneNumber, role } = formData;
         if (!name || !email || !password || !phoneNumber || !role) {
+            return false;
+        }
+        if (!validatePassword(password)) {
             return false;
         }
         return true;
@@ -64,7 +95,7 @@ function RegisterPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) {
-            setErrorMessage('Please fill all the fields.');
+            setErrorMessage(passwordError || 'Please fill all the fields correctly.');
             setTimeout(() => setErrorMessage(''), 5000);
             return;
         }
@@ -116,6 +147,12 @@ function RegisterPage() {
                 <div className="form-group">
                     <label>Password:</label>
                     <input type="password" name="password" value={formData.password} onChange={handleInputChange} required />
+                    {passwordError && <p style={{color: 'red', fontSize: '0.85em', marginTop: '5px'}}>{passwordError}</p>}
+                    <p style={{fontSize: '0.85em', marginTop: '5px', color: '#666'}}>
+                        Password must be 8-12 characters and include:<br/>
+                        • At least one uppercase letter<br/>
+                        • At least one special character (!@#$%^&*...)
+                    </p>
                 </div>
                 <div className="form-group">
                     <label>Role:</label>
