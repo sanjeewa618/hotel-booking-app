@@ -145,7 +145,6 @@ body, #root, .App {
     width: 100%;
 }
 
-
 .auth-container {
     max-width: 400px;
     padding: 20px;
@@ -179,6 +178,8 @@ body, #root, .App {
     display: block;
     font-weight: bold;
 }
+
+
 
 
 /**LOGIN CSS END HERE*/
