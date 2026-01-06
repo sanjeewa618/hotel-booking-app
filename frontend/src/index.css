@@ -178,22 +178,14 @@ body, #root, .App {
     display: block;
     font-weight: bold;
 }
-
-
-
-
 /**LOGIN CSS END HERE*/
-
-
 /**REGISTRATION PAGE START HERE STYLING*/
-
-
-
 .form-group label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
+
 
 .form-group input {
     width: 90%;
