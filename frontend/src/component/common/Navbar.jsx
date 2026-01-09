@@ -15,7 +15,7 @@ function Navbar() {
         const isLogout = window.confirm('Are you sure you want to logout this user?');
         if (isLogout) {
             ApiService.logout();
-            navigate('/home');
+            window.location.href = '/home';
         }
     };
 
@@ -40,7 +40,7 @@ function Navbar() {
                     <li><NavLink to="/home" activeclassname="active">Home</NavLink></li>
                     <li><NavLink to="/about" activeclassname="active">About</NavLink></li>
                     <li><NavLink to="/rooms" activeclassname="active">Rooms</NavLink></li>
-                    
+
                     {isAuthenticated && (
                         <li><NavLink to="/find-booking" activeclassname="active">Bookings</NavLink></li>
                     )}

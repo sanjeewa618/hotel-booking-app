@@ -69,7 +69,7 @@ const ProfilePage = () => {
 
     const handleLogout = () => {
         ApiService.logout();
-        navigate('/home');
+        window.location.href = '/home';
     };
 
     const handleEditProfile = () => {
