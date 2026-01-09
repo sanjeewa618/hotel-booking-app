@@ -30,7 +30,6 @@ public class Booking {
     private int numOfChildren;
 
     private int totalNumOfGuest;
-
     private String bookingConfirmationCode;
 
     @ManyToOne(fetch = FetchType.EAGER)
