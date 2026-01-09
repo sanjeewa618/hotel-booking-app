@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import RoomResult from "../common/RoomResult";
 import RoomSearch from "../common/RoomSearch";
 
 const HomePage = () => {
     const [roomSearchResults, setRoomSearchResults] = useState([]);
+    const navigate = useNavigate();
 
     // Function to handle search results
     const handleSearchResult = (results) => {
@@ -108,6 +110,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Air Conditioning</h3>
                                 <p>Climate-controlled rooms for your ultimate comfort</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/air-conditioning')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -116,6 +124,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Mini Bar</h3>
                                 <p>Complimentary refreshments stocked daily</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/mini-bar')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -124,6 +138,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Secure Parking</h3>
                                 <p>Free valet parking with 24/7 security</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/secure-parking')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -132,6 +152,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>High-Speed WiFi</h3>
                                 <p>Lightning-fast internet throughout the property</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/high-speed-wifi')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -140,6 +166,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Spa & Wellness</h3>
                                 <p>Rejuvenating treatments and massage therapy</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/spa-wellness')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -148,6 +180,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Fine Dining</h3>
                                 <p>Award-winning restaurant with gourmet cuisine</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/fine-dining')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -156,6 +194,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Fitness Center</h3>
                                 <p>State-of-the-art gym equipment available 24/7</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/fitness-center')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -164,6 +208,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Swimming Pool</h3>
                                 <p>Olympic-sized pool with poolside bar service</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/swimming-pool')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -172,6 +222,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Room Service</h3>
                                 <p>Gourmet meals delivered to your room anytime</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/room-service')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -180,6 +236,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Concierge</h3>
                                 <p>Expert assistance for all your travel needs</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/concierge')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -188,6 +250,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Business Center</h3>
                                 <p>Fully equipped meeting rooms and facilities</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/business-center')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
 
@@ -196,6 +264,12 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Laundry Service</h3>
                                 <p>Professional cleaning with same-day delivery</p>
+                                <button 
+                                    className="learn-more-btn"
+                                    onClick={() => navigate('/service/laundry-service')}
+                                >
+                                    Learn More →
+                                </button>
                             </div>
                         </div>
                     </div>

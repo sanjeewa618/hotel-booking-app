@@ -3869,6 +3869,24 @@ button:disabled {
     margin-bottom: 20px;
     text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
     line-height: 1.2;
+    animation: fadeInScale 1s ease-out, titleFloat 3s ease-in-out infinite;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.hero-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #FF7F50, transparent);
+    border-radius: 2px;
+    box-shadow: 0 2px 15px rgba(255, 127, 80, 0.6);
+    animation: underlineExpand 2s ease-in-out infinite;
 }
 
 .brand-highlight {
@@ -4189,7 +4207,56 @@ button:disabled {
     font-size: 15px;
     line-height: 1.6;
     color: #666;
-    margin: 0;
+    margin: 0 0 20px 0;
+}
+
+/* Learn More Button */
+.learn-more-btn {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #007F86, #00a3ad);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 127, 134, 0.2);
+}
+
+.learn-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.learn-more-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.learn-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0, 127, 134, 0.4);
+}
+
+.learn-more-btn:active {
+    transform: translateY(-1px);
+}
+
+.service-item:hover .learn-more-btn {
+    background: linear-gradient(135deg, #006670, #007F86);
 }
 
 /* Modern Footer */
@@ -4363,6 +4430,26 @@ button:disabled {
     to {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes titleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes underlineExpand {
+    0%, 100% {
+        width: 120px;
+        opacity: 1;
+    }
+    50% {
+        width: 160px;
+        opacity: 0.8;
     }
 }
 

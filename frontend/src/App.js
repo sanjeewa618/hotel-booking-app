@@ -22,6 +22,7 @@ import ManageBookingsPage from './component/admin/ManageBookingsPage';
 import EditBookingPage from './component/admin/EditBookingPage';
 import ProfilePage from './component/profile/ProfilePage';
 import EditProfilePage from './component/profile/EditProfilePage';
+import ServiceDetailPage from './component/services/ServiceDetailPage';
 import { ProtectedRoute, AdminRoute } from './service/guard';
 import { CartProvider } from './context/CartContext';
 
@@ -39,6 +40,7 @@ function App() {
               <Route exact path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/rooms" element={<AllRoomsPage />} />
+              <Route path="/service/:serviceName" element={<ServiceDetailPage />} />
 
               {/* Protected Routes */}
               <Route path="/find-booking"
