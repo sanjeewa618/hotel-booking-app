@@ -282,11 +282,11 @@ body, #root, .App {
         gap: 25px;
     }
 
+    
     .navbar-ul {
         gap: 5px;
     }
 }
-
 
 @media (max-width: 768px) {
     .navbar {
