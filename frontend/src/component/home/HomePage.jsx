@@ -52,6 +52,8 @@ const HomePage = () => {
                 delay: 200,
             });
 
+            
+
             // Services items
             window.ScrollReveal().reveal(".service-item", {
                 ...scrollRevealOption,
