@@ -31,7 +31,6 @@ public class User implements UserDetails {
     private String phoneNumber;
 
     @NotBlank(message = "Password is required")
-    @jakarta.validation.constraints.Size(min = 8, max = 12, message = "Password must be 8-12 characters long")
     private String password;
 
     private String role;

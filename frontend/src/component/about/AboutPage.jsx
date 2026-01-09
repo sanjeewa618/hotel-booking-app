@@ -13,6 +13,7 @@ const AboutPage = () => {
                 reset: false,
             };
 
+            
             window.ScrollReveal().reveal(".about-hero", {
                 ...scrollRevealOption,
                 origin: "top",
