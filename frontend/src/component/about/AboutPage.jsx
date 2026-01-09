@@ -59,6 +59,7 @@ const AboutPage = () => {
                 delay: 400,
             });
 
+            
             window.ScrollReveal().reveal(".feature-card", {
                 ...scrollRevealOption,
                 origin: "bottom",
