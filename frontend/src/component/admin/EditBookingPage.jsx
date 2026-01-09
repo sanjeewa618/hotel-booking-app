@@ -9,8 +9,6 @@ const EditBookingPage = () => {
     const [error, setError] = useState(null); // Track any errors
     const [success, setSuccessMessage] = useState(null); // Track any errors
 
-
-
     useEffect(() => {
         const fetchBookingDetails = async () => {
             try {
