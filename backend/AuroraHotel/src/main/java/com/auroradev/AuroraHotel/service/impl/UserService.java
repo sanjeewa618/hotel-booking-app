@@ -38,6 +38,19 @@ public class UserService implements IUserService {
             if (userRepository.existsByEmail(user.getEmail())) {
                 throw new OurException(user.getEmail() + " Already Exists");
             }
+            
+            // Validate password
+            String password = user.getPassword();
+            if (password.length() < 8 || password.length() > 12) {
+                throw new OurException("Password must be 8-12 characters long");
+            }
+            if (!password.matches(".*[A-Z].*")) {
+                throw new OurException("Password must contain at least one uppercase letter");
+            }
+            if (!password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>?/].*")) {
+                throw new OurException("Password must contain at least one special character");
+            }
+            
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = userRepository.save(user);
             UserDTO userDTO = Utils.mapUserEntityToUserDTO(savedUser);

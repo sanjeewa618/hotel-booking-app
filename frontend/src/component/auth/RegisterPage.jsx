@@ -16,6 +16,11 @@ function RegisterPage() {
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [passwordStrength, setPasswordStrength] = useState({
+        hasLength: false,
+        hasUpperCase: false,
+        hasSpecialChar: false
+    });
 
     // ScrollReveal animations
     useEffect(() => {
@@ -62,19 +67,30 @@ function RegisterPage() {
     const validatePassword = (password) => {
         const minLength = 8;
         const maxLength = 12;
+        // Match backend validation exactly
+        const backendRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,12}$/;
         const hasUpperCase = /[A-Z]/.test(password);
         const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+        const hasLength = password.length >= minLength && password.length <= maxLength;
         
-        if (password.length < minLength || password.length > maxLength) {
-            setPasswordError(`Password must be ${minLength}-${maxLength} characters long`);
-            return false;
-        }
-        if (!hasUpperCase) {
-            setPasswordError('Password must contain at least one uppercase letter');
-            return false;
-        }
-        if (!hasSpecialChar) {
-            setPasswordError('Password must contain at least one special character');
+        // Update password strength indicators
+        setPasswordStrength({
+            hasLength,
+            hasUpperCase,
+            hasSpecialChar
+        });
+        
+        // Validate using the exact backend pattern
+        if (!backendRegex.test(password)) {
+            if (!hasLength) {
+                setPasswordError(`Password must be ${minLength}-${maxLength} characters long`);
+            } else if (!hasUpperCase) {
+                setPasswordError('Password must contain at least one uppercase letter');
+            } else if (!hasSpecialChar) {
+                setPasswordError('Password must contain at least one special character');
+            } else {
+                setPasswordError('Password does not meet requirements');
+            }
             return false;
         }
         setPasswordError('');
@@ -100,6 +116,7 @@ function RegisterPage() {
             return;
         }
         try {
+            console.log('Submitting registration with data:', formData);
             // Call the register method from ApiService
             const response = await ApiService.registerUser(formData);
 
@@ -121,8 +138,11 @@ function RegisterPage() {
             }
         }
          catch (error) {
-            setErrorMessage(error.response?.data?.message || error.message);
-            setTimeout(() => setErrorMessage(''), 5000);
+            console.log('Registration error:', error);
+            console.log('Error response:', error.response?.data);
+            const errorMsg = error.response?.data?.message || error.message;
+            setErrorMessage(errorMsg);
+            setTimeout(() => setErrorMessage(''), 10000);
         }
     };
 
@@ -147,12 +167,21 @@ function RegisterPage() {
                 <div className="form-group">
                     <label>Password:</label>
                     <input type="password" name="password" value={formData.password} onChange={handleInputChange} required />
-                    {passwordError && <p style={{color: 'red', fontSize: '0.85em', marginTop: '5px'}}>{passwordError}</p>}
-                    <p style={{fontSize: '0.85em', marginTop: '5px', color: '#666'}}>
-                        Password must be 8-12 characters and include:<br/>
-                        • At least one uppercase letter<br/>
-                        • At least one special character (!@#$%^&*...)
-                    </p>
+                    {passwordError && <p style={{color: '#ff4757', fontSize: '0.85em', marginTop: '8px', fontWeight: '500'}}>{passwordError}</p>}
+                    <div style={{marginTop: '10px', fontSize: '0.85em'}}>
+                        <p style={{marginBottom: '8px', color: '#555', fontWeight: '500'}}>Password Requirements:</p>
+                        <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+                            <span style={{color: passwordStrength.hasLength ? '#2ed573' : '#666'}}>
+                                {passwordStrength.hasLength ? '✓' : '○'} 8-12 characters long
+                            </span>
+                            <span style={{color: passwordStrength.hasUpperCase ? '#2ed573' : '#666'}}>
+                                {passwordStrength.hasUpperCase ? '✓' : '○'} At least one uppercase letter
+                            </span>
+                            <span style={{color: passwordStrength.hasSpecialChar ? '#2ed573' : '#666'}}>
+                                {passwordStrength.hasSpecialChar ? '✓' : '○'} At least one special character (!@#$%^&*...)
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 <div className="form-group">
                     <label>Role:</label>
