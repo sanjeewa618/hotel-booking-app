@@ -11,6 +11,16 @@
     margin: 0 auto;
 }
 
+/* Ensure all sections are visible */
+.dashboard-header,
+.profile-details-card,
+.quick-actions-section,
+.bookings-history-section,
+.booking-card {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 /* Dashboard Header */
 .dashboard-header {
     background: linear-gradient(135deg, #007F86 0%, #00a3ad 100%);
@@ -175,12 +185,13 @@
 .profile-details-card {
     background: white;
     border-radius: 20px;
-    padding: 30px;
-    margin-left: 12px;
+    padding: 20px;
+    margin-left: 80px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     height: fit-content;
     position: sticky;
-    top: 20px;
+    top: 0px;
+    width: 100%;
 }
 
 .card-header {
@@ -252,6 +263,7 @@
     padding: 25px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     margin-bottom: 30px;
+    margin-right: 80px;
 }
 
 .quick-actions-grid {
@@ -259,6 +271,7 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
     margin-top: 20px;
+    
 }
 
 .quick-action-btn {
@@ -306,6 +319,9 @@
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-right: 30px;
+    margin-left: 40px;
+    margin-top: 1px;
 }
 
 .section-header {

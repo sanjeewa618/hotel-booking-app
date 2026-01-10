@@ -22,6 +22,18 @@
     gap: 25px;
 }
 
+/* Ensure all sections are visible */
+.edit-profile-header,
+.success-message,
+.error-message,
+.profile-picture-section,
+.edit-forms-section,
+.profile-content-grid,
+.danger-zone {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 /* Header Section - Full Width */
 .edit-profile-header {
     grid-column: 1 / -1;
@@ -129,7 +141,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-left: 55px;
+    margin-left: 50px;
     width: 100%;
 }
 
@@ -270,7 +282,7 @@
     background: white;
     border-radius: 16px;
     padding: 40px;
-    margin-right: 50px;
+    margin-right: 55px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(23, 162, 184, 0.1);
 }

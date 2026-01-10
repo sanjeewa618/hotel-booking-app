@@ -56,30 +56,31 @@ const EditProfilePage = () => {
                 easing: "ease-in-out",
                 origin: "bottom",
                 reset: false,
+                opacity: 0,
             };
 
             window.ScrollReveal().reveal(".edit-profile-header", {
                 ...scrollRevealOption,
                 origin: "top",
-                delay: 200,
+                delay: 100,
             });
 
             window.ScrollReveal().reveal(".profile-picture-section", {
                 ...scrollRevealOption,
                 origin: "left",
-                delay: 300,
+                delay: 200,
             });
 
             window.ScrollReveal().reveal(".edit-forms-section", {
                 ...scrollRevealOption,
                 origin: "right",
-                delay: 400,
+                delay: 300,
             });
 
             window.ScrollReveal().reveal(".danger-zone", {
                 ...scrollRevealOption,
                 origin: "bottom",
-                delay: 500,
+                delay: 400,
             });
         }
     }, [user]);

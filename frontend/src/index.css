@@ -4053,15 +4053,9 @@ button:disabled {
     background: linear-gradient(90deg, transparent, #007F86, #FF7F50, transparent);
     opacity: 0.6;
 }
-.section-header h2{
-    margin-left: 30%;
-}
-.section-header h4{
-    margin-right: 30%;
-}
+
 .section-title {
     font-size: 48px;
-    margin-left: 50px;
     font-weight: 800;
     background: linear-gradient(135deg, #003366, #007F86);
     -webkit-background-clip: text;

@@ -36,6 +36,7 @@ const ProfilePage = () => {
                 easing: "ease-in-out",
                 origin: "bottom",
                 reset: false,
+                opacity: 0,
             };
 
             window.ScrollReveal().reveal(".dashboard-header", {
@@ -47,26 +48,26 @@ const ProfilePage = () => {
             window.ScrollReveal().reveal(".profile-details-card", {
                 ...scrollRevealOption,
                 origin: "left",
-                delay: 400,
+                delay: 300,
             });
 
             window.ScrollReveal().reveal(".quick-actions-section", {
                 ...scrollRevealOption,
                 origin: "right",
-                delay: 500,
+                delay: 400,
             });
 
             window.ScrollReveal().reveal(".bookings-history-section", {
                 ...scrollRevealOption,
                 origin: "bottom",
-                delay: 600,
+                delay: 500,
             });
 
             window.ScrollReveal().reveal(".booking-card", {
                 ...scrollRevealOption,
                 origin: "bottom",
-                interval: 200,
-                delay: 700,
+                interval: 150,
+                delay: 600,
             });
         }
     }, [user]);
