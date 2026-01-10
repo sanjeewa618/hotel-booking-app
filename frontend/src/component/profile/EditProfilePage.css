@@ -28,6 +28,7 @@
     background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
     border-radius: 16px;
     padding: 32px 40px;
+    margin-top: 55px;
     box-shadow: 0 4px 20px rgba(23, 162, 184, 0.25);
 }
 
@@ -114,6 +115,7 @@
     grid-template-columns: 400px 1fr;
     gap: 25px;
     align-items: start;
+  
 }
 
 /* Profile Picture Section - Left Column */
@@ -127,6 +129,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-left: 55px;
+    width: 100%;
 }
 
 .section-title {
@@ -266,6 +270,7 @@
     background: white;
     border-radius: 16px;
     padding: 40px;
+    margin-right: 50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(23, 162, 184, 0.1);
 }

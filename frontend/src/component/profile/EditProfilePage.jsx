@@ -378,7 +378,7 @@ const EditProfilePage = () => {
                         </div>
                     </div>
 
-                    <div className="form-divider"></div>
+                   
 
                     {/* Password Change Section */}
                     <h2 className="section-title">
