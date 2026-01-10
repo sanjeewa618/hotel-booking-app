@@ -56,7 +56,9 @@ const AdminPage = () => {
                     availableRooms: availableRooms.length
                 };
                 console.log('Stats Data:', statsData);
+                console.log('Setting stats with:', JSON.stringify(statsData));
                 setStats(statsData);
+                console.log('Stats set successfully');
 
                 // Get recent bookings (last 5)
                 const sortedBookings = allBookings
@@ -75,47 +77,18 @@ const AdminPage = () => {
         fetchDashboardData();
     }, []);
 
-    // ScrollReveal animations
+    // ScrollReveal animations - Disabled to prevent visibility issues
     useEffect(() => {
-        if (window.ScrollReveal) {
-            const scrollRevealOption = {
-                distance: "50px",
-                duration: 1000,
-                easing: "ease-in-out",
-                origin: "bottom",
-                reset: false,
-            };
-
-            window.ScrollReveal().reveal(".admin-header", {
-                ...scrollRevealOption,
-                origin: "top",
-                delay: 200,
-            });
-
-            window.ScrollReveal().reveal(".stat-card", {
-                ...scrollRevealOption,
-                origin: "bottom",
-                interval: 150,
-                delay: 400,
-            });
-
-            window.ScrollReveal().reveal(".quick-actions", {
-                ...scrollRevealOption,
-                origin: "bottom",
-                delay: 600,
-            });
-
-            window.ScrollReveal().reveal(".recent-bookings", {
-                ...scrollRevealOption,
-                origin: "bottom",
-                delay: 800,
-            });
-        }
+        // ScrollReveal disabled for admin dashboard
+        // All elements should be immediately visible
     }, [loading]);
 
     // Derived stats
     const occupiedRooms = stats.totalRooms - stats.availableRooms;
     const occupancyRate = stats.totalRooms > 0 ? Math.round((occupiedRooms / stats.totalRooms) * 100) : 0;
+
+    console.log('Rendering AdminPage with stats:', stats);
+    console.log('Occupancy Rate:', occupancyRate);
 
     // Chart calculations (Donut)
     const radius = 70;
