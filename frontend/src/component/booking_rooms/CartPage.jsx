@@ -169,6 +169,7 @@ const CartPage = () => {
                                 total + calculateNights(item.checkInDate, item.checkOutDate), 0
                             )}
                         </span>
+                        
                     </div>
                     <div className="summary-line total">
                         <span>Grand Total:</span>
