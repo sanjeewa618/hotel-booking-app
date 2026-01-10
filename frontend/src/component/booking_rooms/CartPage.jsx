@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import './CartPage.css';
 
 const CartPage = () => {
     const navigate = useNavigate();
@@ -111,6 +112,50 @@ const CartPage = () => {
             )}
 
             <div className="cart-summary">
+                <div className="payment-methods-section">
+                    <h3>We Accept</h3>
+                    <p className="payment-subtitle">Secure payment options available</p>
+                    <div className="payment-methods-grid">
+                        <div className="payment-method-card">
+                            <i className="payment-icon">💳</i>
+                            <span>Credit Card</span>
+                        </div>
+                        <div className="payment-method-card">
+                            <i className="payment-icon">💵</i>
+                            <span>Debit Card</span>
+                        </div>
+                        <div className="payment-method-card">
+                            <i className="payment-icon">🏦</i>
+                            <span>Net Banking</span>
+                        </div>
+                        <div className="payment-method-card">
+                            <i className="payment-icon">📱</i>
+                            <span>UPI</span>
+                        </div>
+                        <div className="payment-method-card">
+                            <i className="payment-icon">💰</i>
+                            <span>Wallet</span>
+                        </div>
+                        <div className="payment-method-card">
+                            <i className="payment-icon">🌐</i>
+                            <span>PayPal</span>
+                        </div>
+                    </div>
+                    <div className="payment-brands">
+                        <div className="brand-badge visa">VISA</div>
+                        <div className="brand-badge mastercard">MasterCard</div>
+                        <div className="brand-badge amex">AMEX</div>
+                        <div className="brand-badge discover">Discover</div>
+                    </div>
+                    <div className="secure-payment">
+                        <i className="secure-icon">🔒</i>
+                        <div className="secure-text">
+                            <strong>100% Secure Payment</strong>
+                            <p>Your payment information is encrypted and secure</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <div className="summary-content">
                     <h3>Order Summary</h3>
                     <div className="summary-line">

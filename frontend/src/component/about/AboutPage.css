@@ -3,6 +3,19 @@
     width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure all sections are visible */
+.about-hero,
+.about-image-container,
+.about-text-container,
+.mv-card,
+.stat-card,
+.team-member {
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* Hero Section */
@@ -14,6 +27,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    margin-top: 0;
 }
 
 .about-hero::before {
@@ -414,9 +428,10 @@
 
 /* Stats Section - Modern Clean Design */
 .stats-section {
-    padding: 120px 80px;
-    background: linear-gradient(180deg, #e5f8fb 0%, #ffffff 100%);
+    padding: 100px 40px;
+    background: linear-gradient(180deg, #ecf1f2 0%, #ffffff 100%);
     position: relative;
+    margin-top: 40px;
     overflow: visible;
 }
 
@@ -431,6 +446,8 @@
 
 .stat-card {
     text-align: center;
+    width: 100%;
+    max-width: 350px;
     padding: 45px 30px;
     background: white;
     border-radius: 16px;
@@ -625,7 +642,8 @@
 
 /* Values Section */
 .values-section {
-    padding: 100px 80px;
+    padding: 100px 60px;
+   
     background: linear-gradient(180deg, #f8fbfc 0%, #ffffff 100%);
 }
 

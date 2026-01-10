@@ -10,6 +10,7 @@ public class AuroraHotelApplication {
 		SpringApplication.run(AuroraHotelApplication.class, args);
 	}
 	
+	
 	@org.springframework.context.annotation.Bean
 	public org.springframework.boot.CommandLineRunner content(javax.sql.DataSource dataSource) {
 		return args -> {

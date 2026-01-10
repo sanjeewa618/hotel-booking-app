@@ -11,39 +11,40 @@ const AboutPage = () => {
                 easing: "ease-in-out",
                 origin: "bottom",
                 reset: false,
+                opacity: 0,
             };
 
             
             window.ScrollReveal().reveal(".about-hero", {
                 ...scrollRevealOption,
                 origin: "top",
-                delay: 200,
+                delay: 100,
             });
 
             window.ScrollReveal().reveal(".about-image-container", {
                 ...scrollRevealOption,
                 origin: "left",
-                delay: 300,
+                delay: 200,
             });
 
             window.ScrollReveal().reveal(".about-text-container", {
                 ...scrollRevealOption,
                 origin: "right",
-                delay: 400,
+                delay: 300,
             });
 
             window.ScrollReveal().reveal(".mv-card", {
                 ...scrollRevealOption,
                 origin: "bottom",
-                interval: 200,
-                delay: 400,
+                interval: 150,
+                delay: 300,
             });
 
             window.ScrollReveal().reveal(".stat-card", {
                 ...scrollRevealOption,
                 origin: "bottom",
-                interval: 150,
-                delay: 400,
+                interval: 100,
+                delay: 300,
             });
 
             window.ScrollReveal().reveal(".team-member", {
@@ -217,27 +218,7 @@ const AboutPage = () => {
                 </div>
             </section>
 
-            {/* Stats Section */}
-            <section className="stats-section">
-                <div className="stats-container">
-                    <div className="stat-card">
-                        <h3 className="stat-number">150+</h3>
-                        <p className="stat-label">Luxury Rooms</p>
-                    </div>
-                    <div className="stat-card">
-                        <h3 className="stat-number">10K+</h3>
-                        <p className="stat-label">Happy Guests</p>
-                    </div>
-                    <div className="stat-card">
-                        <h3 className="stat-number">15+</h3>
-                        <p className="stat-label">Years of Excellence</p>
-                    </div>
-                    <div className="stat-card">
-                        <h3 className="stat-number">24/7</h3>
-                        <p className="stat-label">Customer Service</p>
-                    </div>
-                </div>
-            </section>
+           
 
             {/* Team Values Section */}
             <section className="values-section">
