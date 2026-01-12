@@ -229,15 +229,18 @@ body, #root, .App {
     cursor: pointer;
     padding: 8px;
     z-index: 1001;
+    position: relative;
+    flex-shrink: 0;
 }
 
 .hamburger {
     display: block;
     width: 28px;
-    height: 2px;
+    height: 3px;
     background: #007F86;
     position: relative;
     transition: all 0.3s ease;
+    border-radius: 2px;
 }
 
 .hamburger::before,
@@ -245,9 +248,11 @@ body, #root, .App {
     content: '';
     position: absolute;
     width: 28px;
-    height: 2px;
+    height: 3px;
     background: #007F86;
     transition: all 0.3s ease;
+    left: 0;
+    border-radius: 2px;
 }
 
 .hamburger::before {
@@ -272,6 +277,34 @@ body, #root, .App {
     top: 0;
 }
 
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .navbar {
@@ -291,11 +324,15 @@ body, #root, .App {
 @media (max-width: 768px) {
     .navbar {
         padding: 15px 25px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        justify-content: space-between;
     }
 
     .mobile-menu-toggle {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        order: 3;
     }
 
     .navbar-menu {
@@ -310,6 +347,7 @@ body, #root, .App {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transform: translateY(-120%);
         opacity: 0;
+        z-index: 1000;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         gap: 25px;
         max-height: calc(100vh - 70px);

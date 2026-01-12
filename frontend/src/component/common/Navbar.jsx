@@ -23,10 +23,16 @@ function Navbar() {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
+    const closeMobileMenu = () => {
+        setIsMobileMenuOpen(false);
+    };
+
     return (
         <nav className="navbar">
+            {isMobileMenuOpen && <div className="mobile-menu-overlay" onClick={closeMobileMenu}></div>}
+            
             <div className="navbar-brand">
-                <NavLink to="/home">
+                <NavLink to="/home" onClick={closeMobileMenu}>
                     <span className="brand-text">Aurora Hotel</span>
                 </NavLink>
             </div>
@@ -37,17 +43,17 @@ function Navbar() {
 
             <div className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
                 <ul className="navbar-ul">
-                    <li><NavLink to="/home" activeclassname="active">Home</NavLink></li>
-                    <li><NavLink to="/about" activeclassname="active">About</NavLink></li>
-                    <li><NavLink to="/rooms" activeclassname="active">Rooms</NavLink></li>
+                    <li><NavLink to="/home" activeclassname="active" onClick={closeMobileMenu}>Home</NavLink></li>
+                    <li><NavLink to="/about" activeclassname="active" onClick={closeMobileMenu}>About</NavLink></li>
+                    <li><NavLink to="/rooms" activeclassname="active" onClick={closeMobileMenu}>Rooms</NavLink></li>
 
                     {isAuthenticated && (
-                        <li><NavLink to="/find-booking" activeclassname="active">Bookings</NavLink></li>
+                        <li><NavLink to="/find-booking" activeclassname="active" onClick={closeMobileMenu}>Bookings</NavLink></li>
                     )}
 
                     {isAuthenticated && (
                         <li className="cart-nav-item">
-                            <NavLink to="/cart" activeclassname="active" className="cart-link">
+                            <NavLink to="/cart" activeclassname="active" className="cart-link" onClick={closeMobileMenu}>
                                 <span className="cart-icon">🛒</span>
                                 <span className="cart-text">Cart</span>
                                 {getCartCount() > 0 && (
@@ -57,18 +63,18 @@ function Navbar() {
                         </li>
                     )}
 
-                    {isUser && <li><NavLink to="/profile" activeclassname="active">Profile</NavLink></li>}
-                    {isAdmin && <li><NavLink to="/admin" activeclassname="active">Admin</NavLink></li>}
+                    {isUser && <li><NavLink to="/profile" activeclassname="active" onClick={closeMobileMenu}>Profile</NavLink></li>}
+                    {isAdmin && <li><NavLink to="/admin" activeclassname="active" onClick={closeMobileMenu}>Admin</NavLink></li>}
                 </ul>
 
                 <div className="navbar-actions">
                     {!isAuthenticated ? (
                         <>
-                            <NavLink to="/login" className="btn-login">Login</NavLink>
-                            <NavLink to="/register" className="btn-register">Register</NavLink>
+                            <NavLink to="/login" className="btn-login" onClick={closeMobileMenu}>Login</NavLink>
+                            <NavLink to="/register" className="btn-register" onClick={closeMobileMenu}>Register</NavLink>
                         </>
                     ) : (
-                        <button onClick={handleLogout} className="btn-logout">Logout</button>
+                        <button onClick={() => { handleLogout(); closeMobileMenu(); }} className="btn-logout">Logout</button>
                     )}
                 </div>
             </div>

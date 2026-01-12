@@ -89,7 +89,7 @@
     width: 100%;
     max-width: 350px;
     height: auto;
-    animation: floatIllustration 6s ease-in-out infinite;
+    animation: floatIllustration 4.5s ease-in-out infinite;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
 }
 
