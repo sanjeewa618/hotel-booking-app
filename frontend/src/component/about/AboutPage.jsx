@@ -218,8 +218,6 @@ const AboutPage = () => {
                 </div>
             </section>
 
-           
-
             {/* Team Values Section */}
             <section className="values-section">
                 <h2 className="section-title">Our <span className="highlight">Core Values</span></h2>
@@ -246,6 +244,9 @@ const AboutPage = () => {
                     </div>
                 </div>
             </section>
+
+
+            
 
             {/* Call to Action */}
             <section className="cta-section">
