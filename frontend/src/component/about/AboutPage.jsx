@@ -245,9 +245,6 @@ const AboutPage = () => {
                 </div>
             </section>
 
-
-            
-
             {/* Call to Action */}
             <section className="cta-section">
                 <div className="cta-content">
