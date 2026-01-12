@@ -33,7 +33,6 @@ const EditBookingPage = () => {
                 reset: false,
             };
 
-            
             window.ScrollReveal().reveal(".booking-detail-title", {
                 ...scrollRevealOption,
                 origin: "top",
