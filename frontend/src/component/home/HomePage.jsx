@@ -12,64 +12,14 @@ const HomePage = () => {
         setRoomSearchResults(results);
     };
 
-    // ScrollReveal animations
-    useEffect(() => {
-        if (window.ScrollReveal) {
-            const scrollRevealOption = {
-                distance: "50px",
-                duration: 1000,
-                easing: "ease-in-out",
-                origin: "bottom",
-                reset: false,
-            };
 
-            // Hero section
-            window.ScrollReveal().reveal(".hero-content", {
-                ...scrollRevealOption,
-                origin: "top",
-                delay: 200,
-            });
-
-            // Search section
-            window.ScrollReveal().reveal(".search-wrapper", {
-                ...scrollRevealOption,
-                origin: "bottom",
-                delay: 300,
-            });
-
-            // Room results
-            window.ScrollReveal().reveal(".room-list-item", {
-                ...scrollRevealOption,
-                origin: "bottom",
-                interval: 200,
-                delay: 400,
-            });
-
-            // Services header
-            window.ScrollReveal().reveal(".section-header", {
-                ...scrollRevealOption,
-                origin: "bottom",
-                delay: 200,
-            });
-
-            
-
-            // Services items
-            window.ScrollReveal().reveal(".service-item", {
-                ...scrollRevealOption,
-                origin: "bottom",
-                interval: 150,
-                delay: 400,
-            });
-        }
-    }, []);
 
     return (
         <div className="home-page-wrapper">
             {/* HERO SECTION */}
             <section className="hero-banner-section">
                 <div className="hero-banner-container">
-                    <img src="./assets/images/hero-background.png" alt="Aurora Hotel" className="hero-bg-image" />
+                    <img src="/assets/images/aurora-hero-bg.png" alt="Aurora Hotel" className="hero-bg-image" />
                     <div className="hero-overlay"></div>
                     <div className="hero-content">
                         <h1 className="hero-title">
@@ -102,9 +52,9 @@ const HomePage = () => {
                 <div className="services-container">
                     <div className="section-header">
                         <h2 className="section-title">Our Premium Services</h2>
-                        
+
                     </div>
-                    
+
 
                     <div className="services-grid">
                         <div className="service-item">
@@ -112,7 +62,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Air Conditioning</h3>
                                 <p>Climate-controlled rooms for your ultimate comfort</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/air-conditioning')}
                                 >
@@ -126,7 +76,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Mini Bar</h3>
                                 <p>Complimentary refreshments stocked daily</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/mini-bar')}
                                 >
@@ -140,7 +90,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Secure Parking</h3>
                                 <p>Free valet parking with 24/7 security</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/secure-parking')}
                                 >
@@ -154,7 +104,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>High-Speed WiFi</h3>
                                 <p>Lightning-fast internet throughout the property</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/high-speed-wifi')}
                                 >
@@ -168,7 +118,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Spa & Wellness</h3>
                                 <p>Rejuvenating treatments and massage therapy</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/spa-wellness')}
                                 >
@@ -182,7 +132,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Fine Dining</h3>
                                 <p>Award-winning restaurant with gourmet cuisine</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/fine-dining')}
                                 >
@@ -196,7 +146,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Fitness Center</h3>
                                 <p>State-of-the-art gym equipment available 24/7</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/fitness-center')}
                                 >
@@ -210,7 +160,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Swimming Pool</h3>
                                 <p>Olympic-sized pool with poolside bar service</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/swimming-pool')}
                                 >
@@ -224,7 +174,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Room Service</h3>
                                 <p>Gourmet meals delivered to your room anytime</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/room-service')}
                                 >
@@ -238,7 +188,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Concierge</h3>
                                 <p>Expert assistance for all your travel needs</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/concierge')}
                                 >
@@ -252,7 +202,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Business Center</h3>
                                 <p>Fully equipped meeting rooms and facilities</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/business-center')}
                                 >
@@ -266,7 +216,7 @@ const HomePage = () => {
                             <div className="service-content">
                                 <h3>Laundry Service</h3>
                                 <p>Professional cleaning with same-day delivery</p>
-                                <button 
+                                <button
                                     className="learn-more-btn"
                                     onClick={() => navigate('/service/laundry-service')}
                                 >

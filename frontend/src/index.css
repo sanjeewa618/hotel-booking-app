@@ -8,15 +8,20 @@
 
 /* Hide scrollbars */
 * {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
 
 *::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
+    /* Chrome, Safari, Opera */
 }
 
-body, #root, .App {
+body,
+#root,
+.App {
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -151,9 +156,12 @@ body, #root, .App {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
@@ -299,6 +307,7 @@ body, #root, .App {
         from {
             opacity: 0;
         }
+
         to {
             opacity: 1;
         }
@@ -315,7 +324,7 @@ body, #root, .App {
         gap: 25px;
     }
 
-    
+
     .navbar-ul {
         gap: 5px;
     }
@@ -478,8 +487,15 @@ body, #root, .App {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 .hotel-building {
@@ -502,8 +518,15 @@ body, #root, .App {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .building-windows {
@@ -543,8 +566,13 @@ body, #root, .App {
 }
 
 @keyframes orbit {
-    0% { transform: rotate(0deg) translateX(80px) rotate(0deg); }
-    100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+    0% {
+        transform: rotate(0deg) translateX(80px) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(80px) rotate(-360deg);
+    }
 }
 
 .auth-info {
@@ -658,6 +686,7 @@ body, #root, .App {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1500,6 +1529,7 @@ button[type="submit"]:active {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -1509,6 +1539,7 @@ button[type="submit"]:active {
     background-color: rgba(0, 0, 0, 0.023);
     z-index: 1;
 }
+
 .header-buttons button.btn-secondary {
     background-color: transparent;
     border: 1px solid #fff;
@@ -1546,6 +1577,7 @@ button[type="submit"]:active {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -2042,6 +2074,7 @@ button[type="submit"]:active {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -2104,12 +2137,10 @@ button[type="submit"]:active {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(0, 127, 134, 0.1),
-        transparent
-    );
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(0, 127, 134, 0.1),
+            transparent);
     transform: rotate(45deg) translateX(-100%);
     transition: transform 0.6s ease;
 }
@@ -2125,7 +2156,7 @@ button[type="submit"]:active {
 .service-card:hover {
     transform: translateY(-5px) scale(1.01);
     border-color: #007F86;
-    box-shadow: 
+    box-shadow:
         0 12px 35px rgba(0, 127, 134, 0.25),
         0 0 0 1px rgba(0, 127, 134, 0.1);
     background: linear-gradient(145deg, #ffffff, #f0fafb);
@@ -2208,7 +2239,7 @@ button[type="submit"]:active {
         grid-template-columns: 1fr;
         padding: 20px 30px;
     }
-    
+
     .home-services {
         font-size: 2rem;
     }
@@ -2221,18 +2252,18 @@ button[type="submit"]:active {
         min-height: auto;
         padding: 30px 20px;
     }
-    
+
     .service-card img {
         width: 150px;
         height: 150px;
         margin-right: 0;
         margin-bottom: 20px;
     }
-    
+
     .service-details {
         margin-top: 0;
     }
-    
+
     .home-services {
         font-size: 1.8rem;
         margin-top: 40px;
@@ -2244,20 +2275,20 @@ button[type="submit"]:active {
         padding: 20px 15px;
         gap: 25px;
     }
-    
+
     .service-card {
         padding: 25px 15px;
     }
-    
+
     .service-card img {
         width: 120px;
         height: 120px;
     }
-    
+
     .service-title {
         font-size: 1.3rem;
     }
-    
+
     .service-description {
         font-size: 0.95rem;
     }
@@ -3142,7 +3173,7 @@ button:disabled {
 .all-bookings-title {
     text-align: center;
     margin-top: 50px;
-    
+
     font-size: 2.5em;
     color: #007F86;
     font-weight: 700;
@@ -3248,7 +3279,7 @@ button:disabled {
 }
 
 /*bookings page*/
-.all-bookings-title{
+.all-bookings-title {
     margin-top: 40px;
 }
 
@@ -4106,13 +4137,15 @@ button:disabled {
     transform: translateX(5px);
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn-primary::before, .btn-secondary::before {
+.btn-primary::before,
+.btn-secondary::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -4125,7 +4158,8 @@ button:disabled {
     transition: width 0.6s, height 0.6s;
 }
 
-.btn-primary:hover::before, .btn-secondary:hover::before {
+.btn-primary:hover::before,
+.btn-secondary:hover::before {
     width: 300px;
     height: 300px;
 }
@@ -4288,9 +4322,12 @@ button:disabled {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 4px 15px rgba(0, 127, 134, 0.4);
     }
+
     50% {
         box-shadow: 0 4px 25px rgba(0, 127, 134, 0.6);
     }
@@ -4327,6 +4364,7 @@ button:disabled {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -4338,6 +4376,7 @@ button:disabled {
         opacity: 0;
         transform: translateY(50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -4487,6 +4526,11 @@ button:disabled {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    z-index: 0;
+    filter: blur(1.8px);
+    transform: scale(1.05);
+    height: 699.5px;
+
 }
 
 .hero-overlay {
@@ -4512,9 +4556,9 @@ button:disabled {
 }
 
 .hero-title {
-    font-size: 56px;
+    font-size: 80px;
     font-weight: 800;
-    color: #ffffff;
+    color: whitesmoke;
     margin-bottom: 20px;
     text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
     line-height: 1.2;
@@ -4544,7 +4588,7 @@ button:disabled {
 }
 
 .hero-description {
-    font-size: 22px;
+    font-size: 25px;
     color: #f0f0f0;
     margin-bottom: 40px;
     font-weight: 400;
@@ -4797,52 +4841,53 @@ button:disabled {
 
 .section-header {
     text-align: center;
-    
     margin-bottom: 70px;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, rgba(0, 127, 134, 0.03), rgba(255, 127, 80, 0.03));
-    border-radius: 20px;
+    padding: 50px 20px 30px;
+    background: transparent;
     position: relative;
-    overflow: hidden;
 }
 
 .section-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #007F86, #FF7F50, transparent);
-    opacity: 0.6;
+    content: none;
 }
 
 .section-title {
-    font-size: 48px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #003366, #007F86);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 30px;
+    font-size: 64px;
+    font-weight: 900;
+    color: #003366;
+    margin-bottom: 40px;
     position: relative;
-    display: block;
-    letter-spacing: -1px;
+    display: inline-block;
+    letter-spacing: -1.5px;
     animation: fadeInDown 0.8s ease-out;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+    padding-bottom: 20px;
 }
 
 .section-title::after {
     content: '';
     position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 5px;
-    background: linear-gradient(90deg, #007F86, #00a3ad, #FF7F50);
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 127, 134, 0.3);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #007F86 0%, #00a3ad 100%);
+    border-radius: 2px;
+    animation: expandWidth 0.8s ease-out 0.3s both;
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 100%;
+        opacity: 1;
+    }
 }
 
 .section-subtitle {
@@ -4863,6 +4908,7 @@ button:disabled {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -4874,6 +4920,7 @@ button:disabled {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -5197,6 +5244,7 @@ button:disabled {
     margin-top: 3px;
     font-size: 16px;
 }
+
 .footer-contact span {
     color: rgba(255, 255, 255, 0.8);
 }
@@ -5250,6 +5298,7 @@ button:disabled {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.9);
     }
+
     to {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
@@ -5257,19 +5306,25 @@ button:disabled {
 }
 
 @keyframes titleFloat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-8px);
     }
 }
 
 @keyframes underlineExpand {
-    0%, 100% {
+
+    0%,
+    100% {
         width: 120px;
         opacity: 1;
     }
+
     50% {
         width: 160px;
         opacity: 0.8;
