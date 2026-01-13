@@ -2,8 +2,7 @@
     margin: 0;
     font-family: Arial, sans-serif;
     color: #666;
-    /* box-sizing: border-box; */
-    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 /* Hide scrollbars */
@@ -1555,6 +1554,7 @@ button[type="submit"]:active {
 
 .search-container {
     display: flex;
+    color: #00c4d4;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
@@ -1566,7 +1566,7 @@ button[type="submit"]:active {
     max-width: 1400px;
     background: linear-gradient(145deg, #ffffff, #f8fbfc);
     border-radius: 25px;
-    box-shadow: 0 10px 40px rgba(0, 127, 134, 0.12);
+    box-shadow: 0 20px 80px rgba(0, 127, 134, 0.12);
     position: relative;
     overflow: visible;
     animation: slideUp 0.8s ease-out;
@@ -1605,12 +1605,12 @@ button[type="submit"]:active {
 
 .search-field {
     flex: 1;
-    min-width: 220px;
+    min-width: 300px;
     padding: 20px;
     border: 2px solid transparent;
     border-radius: 15px;
     background: white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 18px 21px rgba(0, 0, 0, 0.08);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 10;
@@ -1702,12 +1702,13 @@ button[type="submit"]:active {
     will-change: transform;
 }
 
+/* Fix spacing to avoid covering label when popping up */
 .react-datepicker-popper[data-placement^="bottom"] {
-    padding-top: 8px !important;
+    padding-top: 12px !important;
 }
 
 .react-datepicker-popper[data-placement^="top"] {
-    padding-bottom: 8px !important;
+    padding-bottom: 50px !important;
 }
 
 .react-datepicker {
@@ -4557,11 +4558,12 @@ button:disabled {
 
 .hero-title {
     font-size: 80px;
+
     font-weight: 800;
     color: whitesmoke;
     margin-bottom: 20px;
     text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
-    line-height: 1.2;
+    line-height: 0.9;
     animation: fadeInScale 1s ease-out, titleFloat 3s ease-in-out infinite;
     position: relative;
     display: inline-block;
@@ -4679,29 +4681,66 @@ button:disabled {
     width: 100%;
 }
 
-.search-section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #007F86, #FF7F50);
-    border-radius: 2px;
-}
+
 
 /* Fixed DatePicker Calendar Visibility */
 .search-container {
+    position: relative;
+    z-index: 100;
+    overflow: visible !important;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    max-width: 1100px;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 127, 134, 0.1);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.home-search-button {
+    padding: 0 40px;
+    height: 52px;
+    background: linear-gradient(135deg, #007F86 0%, #005f66 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 127, 134, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-search-button:hover {
+    background: linear-gradient(135deg, #009aa3 0%, #007F86 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0, 127, 134, 0.35);
+}
+
+.home-search-button:active {
+    transform: scale(0.98);
+}
+
+.search-field {
     position: relative;
     z-index: 10;
     overflow: visible !important;
 }
 
-.search-field {
-    position: relative;
-    z-index: 1;
-    overflow: visible !important;
+.search-field:focus-within {
+    z-index: 1000 !important;
 }
 
 .search-field .react-datepicker-wrapper {
@@ -4847,48 +4886,34 @@ button:disabled {
     position: relative;
 }
 
+.services-showcase-section h2 {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 700;
+    color: #003366;
+    margin-bottom: 50px;
+    position: relative;
+   
+    width: 100%;
+}
+
 .section-header::before {
     content: none;
 }
 
 .section-title {
-    font-size: 64px;
-    font-weight: 900;
+    font-size: 48px;
+    font-weight: 800;
     color: #003366;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     position: relative;
     display: inline-block;
-    letter-spacing: -1.5px;
-    animation: fadeInDown 0.8s ease-out;
-    line-height: 1.2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #007F86 0%, #00a3ad 100%);
-    border-radius: 2px;
-    animation: expandWidth 0.8s ease-out 0.3s both;
-}
 
-@keyframes expandWidth {
-    from {
-        width: 0;
-        opacity: 0;
-    }
 
-    to {
-        width: 100%;
-        opacity: 1;
-    }
-}
+
 
 .section-subtitle {
     font-size: 20px;

@@ -106,7 +106,7 @@ const AboutPage = () => {
                         </div>
                     </div>
                     <div className="about-text-container">
-                        <h2>Welcome to <span className="highlight">Aurora Hotel</span></h2>
+                        <h2>Welcome to Aurora Hotel</h2>
                         <p className="intro-text">
                             At Aurora Hotel, we believe that every stay should be more than just a place to rest — it should be 
                             an experience filled with comfort, beauty, and unforgettable memories.
