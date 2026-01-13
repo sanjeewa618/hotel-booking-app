@@ -52,7 +52,7 @@ const FooterComponent = () => {
                     <ul className="footer-contact">
                         <li>
                             <i className="fas fa-map-marker-alt"></i>
-                            <span>123 Luxury Lane, Paradise City</span>
+                            <span>NO 18, Colombo RD, Sri Lanka</span>
                         </li>
                         <li>
                             <i className="fas fa-phone"></i>
