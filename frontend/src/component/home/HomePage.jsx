@@ -12,8 +12,6 @@ const HomePage = () => {
         setRoomSearchResults(results);
     };
 
-
-
     return (
         <div className="home-page-wrapper">
             {/* HERO SECTION */}
@@ -231,5 +229,6 @@ const HomePage = () => {
         </div>
     );
 }
+
 
 export default HomePage;

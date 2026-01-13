@@ -4568,8 +4568,6 @@ button:disabled {
     padding-bottom: 15px;
 }
 
-
-
 .hero-title::after {
     content: '';
     position: absolute;
