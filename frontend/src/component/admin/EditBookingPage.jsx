@@ -53,13 +53,10 @@ const EditBookingPage = () => {
             });
         }
     }, [bookingDetails]);
-
-
     const acheiveBooking = async (bookingId) => {
         if (!window.confirm('Are you sure you want to Archive this booking?')) {
             return; // Do nothing if the user cancels
         }
-
         try {
             // Check if user is logged in
             const token = localStorage.getItem('token');
@@ -77,8 +74,7 @@ const EditBookingPage = () => {
                 setError('Only administrators can archive bookings');
                 setTimeout(() => setError(''), 5000);
                 return;
-            }
-
+            }         
             const response = await ApiService.cancelBooking(bookingId);
             if (response.statusCode === 200) {
                 setSuccessMessage("The booking was Successfully Archived")
