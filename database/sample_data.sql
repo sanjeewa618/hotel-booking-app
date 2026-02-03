@@ -56,7 +56,8 @@ INSERT INTO rooms (room_type, room_price, room_photo_url, room_description) VALU
 
 -- Presidential Suite
 INSERT INTO rooms (room_type, room_price, room_photo_url, room_description) VALUES
-('Presidential', 599.99, 'https://example.com/photos/presidential-suite-1.jpg', 'Ultimate luxury presidential suite with multiple rooms, private dining area, and exclusive concierge service. The pinnacle of elegance and comfort.');
+('Presidential', 599.99, 'https://example.com/photos/presidential-suite-1.jpg', 'Ultimate luxury presidential suite with multiple rooms, private dining area, and exclusive concierge service. The pinnacle of elegance and comfort.'),
+('Presidential', 399.99, 'https://example.com/photos/presidential-suite-1.jpg', 'Luxury presidential suite with multiple rooms, private dining area, and exclusive concierge service. The pinnacle of elegance and comfort.');
 
 -- ============================================
 -- Insert Sample Bookings

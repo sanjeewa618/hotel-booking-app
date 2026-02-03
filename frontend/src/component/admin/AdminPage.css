@@ -252,6 +252,28 @@ div[style*="display: flex"] {
     color: var(--text-light);
 }
 
+/* New Room Button Styles */
+.btn-new-room {
+    background-color: #097e74;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.btn-new-room:hover {
+    background-color: #059669;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+}
+
 .top-actions {
     display: flex;
     gap: 16px;
@@ -293,11 +315,35 @@ div[style*="display: flex"] {
     background-color: #F9FAFB;
 }
 
+.btn-refresh {
+    background: rgba(255, 255, 255, 0.948);
+    color: rgb(16, 16, 16);
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-refresh:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 127, 134, 0.3);
+    background: linear-gradient(135deg, #006066 0%, #edecec 100%);
+}
+
+.btn-refresh:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
 /* Dashboard Grid */
 .dashboard-header {
     margin-bottom: 24px;
     visibility: visible !important;
     opacity: 1 !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .dashboard-header h1 {

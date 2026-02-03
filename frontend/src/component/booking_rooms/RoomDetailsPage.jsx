@@ -208,7 +208,23 @@ const RoomDetailsPage = () => {
       </div>
       {bookings && bookings.length > 0 && (
         <div>
-          <h3>Existing Booking Details</h3>
+          <h3 style={{ 
+            fontSize: '2rem', 
+            fontWeight: '700', 
+            background: 'linear-gradient(135deg, #007F86 0%, #FF8C42 100%)', 
+            WebkitBackgroundClip: 'text', 
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textAlign: 'center',
+            margin: '20px auto',
+            padding: '10px 0',
+            letterSpacing: '1.5px',
+            textTransform: 'uppercase',
+            maxWidth: '600px',
+            wordBreak: 'break-word'
+          }}>
+            ✨ BOOKING DETAILS ✨
+          </h3>
           <ul className="booking-list">
             {bookings.map((booking, index) => (
               <li key={booking.id} className="booking-item">

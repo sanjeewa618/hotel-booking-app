@@ -48,7 +48,7 @@ const FindBookingPage = () => {
 
     return (
         <div className="find-booking-page">
-            <h2>Find Booking</h2>
+            <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Find Booking</h2>
             <div className="search-container">
                 <input
                     className="booking-code-input"
@@ -68,7 +68,23 @@ const FindBookingPage = () => {
             {error && <p className="error-message" style={{ color: 'red', marginTop: '20px', fontSize: '16px' }}>{error}</p>}
             {bookingDetails && (
                 <div className="booking-details">
-                    <h3>Booking Details</h3>
+                    <h3 style={{ 
+                        fontSize: '2rem', 
+                        fontWeight: '700', 
+                        background: 'linear-gradient(135deg, #007F86 0%, #FF8C42 100%)', 
+                        WebkitBackgroundClip: 'text', 
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        textAlign: 'center',
+                        margin: '20px auto',
+                        padding: '10px 0',
+                        letterSpacing: '1.5px',
+                        textTransform: 'uppercase',
+                        maxWidth: '600px',
+                        wordBreak: 'break-word'
+                    }}>
+                         BOOKING DETAILS 
+                    </h3>
                     <p>Confirmation Code: {bookingDetails.bookingConfirmationCode}</p>
                     <p>Check-in Date: {bookingDetails.checkInDate}</p>
                     <p>Check-out Date: {bookingDetails.checkOutDate}</p>

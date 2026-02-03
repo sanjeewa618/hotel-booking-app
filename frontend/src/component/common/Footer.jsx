@@ -1,7 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const FooterComponent = () => {
+    const location = useLocation();
+    const isAdmin = location.pathname.startsWith('/admin');
+
+    if (isAdmin) return null;
+
     return (
         <footer className="modern-footer">
             <div className="footer-content">

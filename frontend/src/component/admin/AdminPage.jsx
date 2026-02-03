@@ -13,69 +13,109 @@ const AdminPage = () => {
     });
     const [recentBookings, setRecentBookings] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [refreshing, setRefreshing] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchDashboardData = async () => {
-            try {
+    const fetchDashboardData = async (isManualRefresh = false) => {
+        try {
+            if (isManualRefresh) {
+                setRefreshing(true);
+            } else {
                 setLoading(true);
+            }
 
-                // Fetch admin profile
-                const profileResponse = await ApiService.getUserProfile();
-                console.log('Admin Profile:', profileResponse);
-                setAdminName(profileResponse.user.name);
+            // Fetch admin profile
+            const profileResponse = await ApiService.getUserProfile();
+            console.log('Admin Profile:', profileResponse);
+            setAdminName(profileResponse.user.name);
 
-                // Fetch all rooms
-                const roomsResponse = await ApiService.getAllRooms();
-                const allRooms = roomsResponse.roomList || [];
-                console.log('All Rooms Response:', roomsResponse);
-                console.log('Total Rooms:', allRooms.length);
+            // Fetch all rooms
+            const roomsResponse = await ApiService.getAllRooms();
+            const allRooms = roomsResponse.roomList || [];
+            console.log('All Rooms Response:', roomsResponse);
+            console.log('Total Rooms:', allRooms.length);
 
-                // Fetch all bookings
-                const bookingsResponse = await ApiService.getAllBookings();
-                console.log('All Bookings Response:', bookingsResponse);
-                const allBookings = bookingsResponse.bookingList || [];
-                console.log('Total Bookings:', allBookings.length);
-                console.log('Bookings:', allBookings);
+            // Fetch all bookings
+            const bookingsResponse = await ApiService.getAllBookings();
+            console.log('========== BOOKINGS DEBUG ==========');
+            console.log('All Bookings Response:', bookingsResponse);
+            console.log('Response Status Code:', bookingsResponse.statusCode);
+            console.log('Response Message:', bookingsResponse.message);
+            console.log('Booking List:', bookingsResponse.bookingList);
+            const allBookings = bookingsResponse.bookingList || [];
+            console.log('Total Bookings Count:', allBookings.length);
+            console.log('Bookings Array:', allBookings);
+            console.log('====================================');
 
-                // Fetch all users
-                const usersResponse = await ApiService.getAllUsers();
-                const allUsers = usersResponse.userList || [];
-                console.log('Total Users:', allUsers.length);
+            // Fetch all users
+            const usersResponse = await ApiService.getAllUsers();
+            const allUsers = usersResponse.userList || [];
+            console.log('Total Users:', allUsers.length);
 
-                // Fetch available rooms
-                const availableRoomsResponse = await ApiService.getAllAvailableRooms();
-                const availableRooms = availableRoomsResponse.roomList || [];
-                console.log('Available Rooms:', availableRooms.length);
+            // Fetch available rooms
+            const availableRoomsResponse = await ApiService.getAllAvailableRooms();
+            console.log('========== AVAILABLE ROOMS DEBUG ==========');
+            console.log('Available Rooms Response:', availableRoomsResponse);
+            console.log('Response Status Code:', availableRoomsResponse.statusCode);
+            const availableRooms = availableRoomsResponse.roomList || [];
+            console.log('Available Rooms Count:', availableRooms.length);
+            console.log('============================================');
 
-                // Set statistics
-                const statsData = {
-                    totalRooms: allRooms.length,
-                    totalBookings: allBookings.length,
-                    totalUsers: allUsers.length,
-                    availableRooms: availableRooms.length
-                };
-                console.log('Stats Data:', statsData);
-                console.log('Setting stats with:', JSON.stringify(statsData));
-                setStats(statsData);
-                console.log('Stats set successfully');
+            // Set statistics
+            const statsData = {
+                totalRooms: allRooms.length,
+                totalBookings: allBookings.length,
+                totalUsers: allUsers.length,
+                availableRooms: availableRooms.length
+            };
+            console.log('========== FINAL STATS ==========');
+            console.log('Stats Data Being Set:', statsData);
+            console.log('Total Rooms:', allRooms.length);
+            console.log('Total Bookings:', allBookings.length);
+            console.log('Total Users:', allUsers.length);
+            console.log('Available Rooms:', availableRooms.length);
+            console.log('=================================');
+            setStats(statsData);
+            console.log('Stats state updated successfully');
 
-                // Get recent bookings (last 5)
-                const sortedBookings = allBookings
-                    .sort((a, b) => new Date(b.checkInDate) - new Date(a.checkInDate))
-                    .slice(0, 5);
-                setRecentBookings(sortedBookings);
+            // Get recent bookings (last 5)
+            const sortedBookings = allBookings
+                .sort((a, b) => new Date(b.checkInDate) - new Date(a.checkInDate))
+                .slice(0, 5);
+            setRecentBookings(sortedBookings);
 
-            } catch (error) {
-                console.error('Error fetching dashboard data:', error);
-                console.error('Error details:', error.response?.data || error.message);
-            } finally {
-                setLoading(false);
+        } catch (error) {
+            console.error('Error fetching dashboard data:', error);
+            console.error('Error details:', error.response?.data || error.message);
+        } finally {
+            setLoading(false);
+            setRefreshing(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchDashboardData();
+        
+        // Set up automatic refresh every 30 seconds
+        const refreshInterval = setInterval(() => {
+            fetchDashboardData();
+        }, 30000);
+
+        // Refresh when page becomes visible again (user switches back to this tab)
+        const handleVisibilityChange = () => {
+            if (!document.hidden) {
+                console.log('Page became visible, refreshing dashboard...');
+                fetchDashboardData();
             }
         };
 
+        document.addEventListener('visibilitychange', handleVisibilityChange);
 
-        fetchDashboardData();
+        // Cleanup interval and event listener on component unmount
+        return () => {
+            clearInterval(refreshInterval);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
     }, []);
 
     // ScrollReveal animations - Disabled to prevent visibility issues
@@ -167,7 +207,7 @@ const AdminPage = () => {
                         <input type="text" className="search-input" placeholder="Search bookings, rooms, or guests..." />
                     </div>
                     <div className="top-actions">
-                        <button className="btn-secondary" onClick={() => navigate('/admin/add-room')}>
+                        <button style={{ color: '#ffffff', fontSize: '18px' }} className="btn-secondary" onClick={() => navigate('/admin/add-room')}>
                             <span>+</span> New Room
                         </button>
                         <button className="btn-primary" onClick={() => navigate('/rooms')}>
@@ -178,8 +218,19 @@ const AdminPage = () => {
 
                 {/* Dashboard Header */}
                 <div className="dashboard-header">
-                    <h1>Good Morning, {adminName}</h1>
-                    <p>Here's what's happening at the hotel today.</p>
+                    <div>
+                        <h1 style={{ color: '#141212d8', fontSize: '30px' }}>Good Morning, {adminName}</h1>
+                        <p style={{ color: '#ebe8e8', fontSize: '18px' }}>Here's what's happening at the hotel today.</p>
+                        
+                    </div>
+                    <button 
+                        className="btn-secondary btn-refresh" 
+                        onClick={() => fetchDashboardData(true)}
+                        disabled={refreshing}
+                        style={{ marginLeft: 'auto' }}
+                    >
+                        <span >{refreshing ? '↻' : '🔄'}</span> {refreshing ? 'Refreshing...' : 'Refresh'}
+                    </button>
                 </div>
 
                 {/* Stats Cards */}

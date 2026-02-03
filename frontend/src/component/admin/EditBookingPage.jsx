@@ -100,7 +100,23 @@ const EditBookingPage = () => {
             {bookingDetails && (
                 <div className="booking-details">
                     <div className="booking-section-card">
-                        <h3 className="section-heading">Booking Details</h3>
+                        <h3 className="section-heading" style={{ 
+                            fontSize: '2rem', 
+                            fontWeight: '700', 
+                            background: 'linear-gradient(135deg, #007F86 0%, #FF8C42 100%)', 
+                            WebkitBackgroundClip: 'text', 
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                            textAlign: 'center',
+                            margin: '3px auto',
+                            padding: '10px 0',
+                            letterSpacing: '1.5px',
+                            textTransform: 'uppercase',
+                            maxWidth: '600px',
+                            wordBreak: 'break-word'
+                        }}>
+                            ✨ BOOKING DETAILS ✨
+                        </h3>
                         <div className="detail-item">
                             <span className="detail-label">Confirmation Code:</span>
                             <span className="detail-value">{bookingDetails.bookingConfirmationCode}</span>
