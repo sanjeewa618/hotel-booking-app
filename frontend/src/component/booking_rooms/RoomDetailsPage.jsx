@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ApiService from '../../service/ApiService';
 import DatePicker from 'react-datepicker';
 import { useCart } from '../../context/CartContext';
-// import 'react-datepicker/dist/react-datepicker.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const RoomDetailsPage = () => {
   const navigate = useNavigate();
