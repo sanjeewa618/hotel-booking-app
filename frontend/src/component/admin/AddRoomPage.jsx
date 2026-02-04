@@ -10,6 +10,7 @@ const AddRoomPage = () => {
         roomType: '',
         roomPrice: '',
         roomDescription: '',
+        acType: 'Non-AC',
     });
     const [file, setFile] = useState(null);
     const [preview, setPreview] = useState(null);
@@ -138,6 +139,7 @@ const AddRoomPage = () => {
             const cleanPrice = roomDetails.roomPrice.replace(/[^0-9.]/g, '');
             formData.append('roomPrice', cleanPrice);
             formData.append('roomDescription', roomDetails.roomDescription);
+            formData.append('acType', roomDetails.acType);
 
             if (file) {
                 formData.append('photo', file);
@@ -220,6 +222,17 @@ const AddRoomPage = () => {
                         value={roomDetails.roomDescription}
                         onChange={handleChange}
                     ></textarea>
+                </div>
+                <div className="form-group">
+                    <label>AC Type</label>
+                    <select
+                        name="acType"
+                        value={roomDetails.acType}
+                        onChange={handleChange}
+                    >
+                        <option value="Non-AC">Non-AC</option>
+                        <option value="AC">AC</option>
+                    </select>
                 </div>
                 <button className="update-button" onClick={addRoom}>Add Room</button>
             </div>

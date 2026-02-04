@@ -28,7 +28,7 @@ public class RoomService implements IRoomService {
     private AwsS3Service awsS3Service;
 
     @Override
-    public Response addNewRoom(MultipartFile photo, String roomType, BigDecimal roomPrice, String description) {
+    public Response addNewRoom(MultipartFile photo, String roomType, BigDecimal roomPrice, String description, String acType) {
         Response response = new Response();
 
         try {
@@ -38,6 +38,7 @@ public class RoomService implements IRoomService {
             room.setRoomType(roomType);
             room.setRoomPrice(roomPrice);
             room.setRoomDescription(description);
+            room.setAcType(acType);
             Room savedRoom = roomRepository.save(room);
             RoomDTO roomDTO = Utils.mapRoomEntityToRoomDTO(savedRoom);
             response.setStatusCode(200);
@@ -100,7 +101,7 @@ public class RoomService implements IRoomService {
     @Override
     @SuppressWarnings("null")
     public Response updateRoom(Long roomId, String description, String roomType, BigDecimal roomPrice,
-            MultipartFile photo) {
+            MultipartFile photo, String acType) {
         Response response = new Response();
 
         try {
@@ -120,6 +121,8 @@ public class RoomService implements IRoomService {
                 room.setRoomDescription(description);
             if (imageUrl != null)
                 room.setRoomPhotoUrl(imageUrl);
+            if (acType != null)
+                room.setAcType(acType);
 
             Room updatedRoom = roomRepository.save(room);
             RoomDTO roomDTO = Utils.mapRoomEntityToRoomDTO(updatedRoom);

@@ -10,6 +10,7 @@ const EditRoomPage = () => {
         roomType: '',
         roomPrice: '',
         roomDescription: '',
+        acType: 'Non-AC',
     });
     const [file, setFile] = useState(null);
     const [preview, setPreview] = useState(null);
@@ -26,6 +27,7 @@ const EditRoomPage = () => {
                     roomType: response.room.roomType,
                     roomPrice: response.room.roomPrice,
                     roomDescription: response.room.roomDescription,
+                    acType: response.room.acType || 'Non-AC',
                 });
             } catch (error) {
                 setError(error.response?.data?.message || error.message);
@@ -60,6 +62,7 @@ const EditRoomPage = () => {
             formData.append('roomType', roomDetails.roomType);
             formData.append('roomPrice', roomDetails.roomPrice);
             formData.append('roomDescription', roomDetails.roomDescription);
+            formData.append('acType', roomDetails.acType);
 
             if (file) {
                 formData.append('photo', file);
@@ -145,6 +148,17 @@ const EditRoomPage = () => {
                         value={roomDetails.roomDescription}
                         onChange={handleChange}
                     ></textarea>
+                </div>
+                <div className="form-group">
+                    <label>AC Type</label>
+                    <select
+                        name="acType"
+                        value={roomDetails.acType}
+                        onChange={handleChange}
+                    >
+                        <option value="Non-AC">Non-AC</option>
+                        <option value="AC">AC</option>
+                    </select>
                 </div>
                 <button className="update-button" onClick={handleUpdate}>Update Room</button>
                 <button className="delete-button" onClick={handleDelete}>Delete Room</button>

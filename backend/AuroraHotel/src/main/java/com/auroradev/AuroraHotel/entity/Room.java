@@ -19,9 +19,15 @@ public class Room {
 
     private String roomType;
     private BigDecimal roomPrice;
+    
+    @Column(name = "room_image")
     private String roomPhotoUrl;
+    
     private String roomDescription;
     
+    @Column(name = "ac_type")
+    private String acType;
+
     @Column(name = "available", nullable = false)
     private boolean available = true;
     

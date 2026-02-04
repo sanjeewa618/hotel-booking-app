@@ -27,7 +27,8 @@ public class RoomController {
             @RequestParam(value = "photo", required = false) MultipartFile photo,
             @RequestParam(value = "roomType", required = false) String roomType,
             @RequestParam(value = "roomPrice", required = false) BigDecimal roomPrice,
-            @RequestParam(value = "roomDescription", required = false) String roomDescription) {
+            @RequestParam(value = "roomDescription", required = false) String roomDescription,
+            @RequestParam(value = "acType", required = false) String acType) {
 
         if (photo == null || photo.isEmpty() || roomType == null || roomType.isBlank() || roomPrice == null
                 || roomType.isBlank()) {
@@ -36,7 +37,7 @@ public class RoomController {
             response.setMessage("Please provide values for all fields(photo, roomType,roomPrice)");
             return ResponseEntity.status(response.getStatusCode()).body(response);
         }
-        Response response = roomService.addNewRoom(photo, roomType, roomPrice, roomDescription);
+        Response response = roomService.addNewRoom(photo, roomType, roomPrice, roomDescription, acType);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
@@ -84,10 +85,11 @@ public class RoomController {
             @RequestParam(value = "photo", required = false) MultipartFile photo,
             @RequestParam(value = "roomType", required = false) String roomType,
             @RequestParam(value = "roomPrice", required = false) BigDecimal roomPrice,
-            @RequestParam(value = "roomDescription", required = false) String roomDescription
+            @RequestParam(value = "roomDescription", required = false) String roomDescription,
+            @RequestParam(value = "acType", required = false) String acType
 
     ) {
-        Response response = roomService.updateRoom(roomId, roomDescription, roomType, roomPrice, photo);
+        Response response = roomService.updateRoom(roomId, roomDescription, roomType, roomPrice, photo, acType);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
